@@ -44,5 +44,10 @@ namespace Education_Service.Controllers
 
             return View();
         }
+
+        public ActionResult index2()
+        {
+            return View();
+        }
     }
 }
