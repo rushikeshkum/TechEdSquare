@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<link href="~/css/login.css" rel="stylesheet" />
+<div class="body2">
+    <div class="wrapper2">
+        <div class="title">
+            Signup Here
+        </div>
+        <form action="#">
+            <div class="field">
+                <input type="text" required>
+                <label>Full Name</label>
+            </div>
+            <div class="field">
+                <input type="text" required>
+                <label>Phone No</label>
+            </div>
+            <div class="field">
+                <input type="text" required>
+                <label>Pan ID</label>
+            </div>
+            <div class="field">
+                <input type="text" required>
+                <label>Email Address</label>
+            </div>
+            <div class="field">
+                <input type="date" required>
+                <label>Dob</label>
+            </div>
+            <div class="field">
+                <input type="password" required>
+                <label>Password</label>
+            </div>
+            <div class="content">
+                <div class="checkbox">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+
+            </div>
+            <div class="field">
+                <input type="submit" value="Signup">
+            </div>
+            <div class="signup-link">
+                Already member? <a href="/LoginUser/Login">Login </a>
+            </div>
+        </form>
+    </div>
+</div>

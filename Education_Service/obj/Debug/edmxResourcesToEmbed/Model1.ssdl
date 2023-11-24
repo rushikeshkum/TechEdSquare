@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_techedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblAnnouncement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblClassCategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblClassCourse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseCategory" Type="int" Nullable="false" />
+    <Property Name="BatchInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EducatorProfile" Type="int" />
+    <Property Name="CourseDiscription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DetailedDiscription" Type="nvarchar(max)" />
+    <Property Name="CourseDuration" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CourseFees" Type="float" Nullable="false" />
+    <Property Name="CoursePreviewLink" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CourseStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblCourseVideos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="VideoTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="VideoLink" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblEducatorDetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="EducatorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EducatorProfile" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DetailedProfile" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EducatorMailId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EducatorMobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="EducatorPhoto" Type="binary" MaxLength="8000" />
+  </EntityType>
+  <EntityType Name="tblEnquiry">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="InterestedIn" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblIdPassword">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRefund">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrnDate" Type="date" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="TrnMode" Type="int" Nullable="false" />
+    <Property Name="TrnType" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Narration" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSales">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrnDate" Type="date" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="SubscribedCourseId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSalesReturn">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrnDate" Type="date" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="SubscribedCourseId" Type="int" Nullable="false" />
+    <Property Name="Naration" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblStudentData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentMobileNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentMailId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentDOB" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentPAN" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentCourseUsername" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubscribedCourseId" Type="int" Nullable="false" />
+    <Property Name="StudentLoginPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="StudentStatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblTransaction">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrnDate" Type="date" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="TrnMode" Type="int" Nullable="false" />
+    <Property Name="TrnType" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Narration" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblTrnMode">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrnMode" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_teched.dbo.CollectionReceivedView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CollectionReceivedView">
+    <Key>
+      <PropertyRef Name="TrnDate" />
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="StudentName" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="Amount" />
+    </Key>
+    <Property Name="TrnDate" Type="date" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DB_teched.dbo.CoursesSoldWorth' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CoursesSoldWorth">
+          <Property Name="SalesTotalAmount" Type="float" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DB_teched.dbo.CoursesUnsubscribedWorth' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CoursesUnsubscribedWorth">
+          <Property Name="SalesReturnTotalAmount" Type="float" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DB_teched.dbo.NetSalesAmount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="NetSalesAmount">
+          <Property Name="netSales" Type="float" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_teched.dbo.PaymentRefundView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PaymentRefundView">
+    <Key>
+      <PropertyRef Name="TrnDate" />
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="StudentName" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Narration" />
+    </Key>
+    <Property Name="TrnDate" Type="date" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Narration" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_teched.dbo.SalesReturnView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SalesReturnView">
+    <Key>
+      <PropertyRef Name="TrnDate" />
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="StudentName" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="CourseFees" />
+      <PropertyRef Name="Naration" />
+    </Key>
+    <Property Name="TrnDate" Type="date" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseFees" Type="float" Nullable="false" />
+    <Property Name="Naration" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_teched.dbo.SalesView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SalesView">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="TrnDate" />
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="StudentName" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="CourseFees" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="TrnDate" Type="date" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseFees" Type="float" Nullable="false" />
+    <Property Name="RunningTotal" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DB_teched.dbo.trialSalesDiff' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="trialSalesDiff">
+          <Property Name="SalesTotalAmount" Type="float" />
+          <Property Name="SalesReturnTotalAmount" Type="float" />
+        </EntityType>-->
+  <Association Name="FK_tblAnnouncement_tblClassCourse">
+    <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+    <End Role="tblAnnouncement" Type="Self.tblAnnouncement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClassCourse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblAnnouncement">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblClassCourse_tblClassCategory">
+    <End Role="tblClassCategory" Type="Self.tblClassCategory" Multiplicity="1" />
+    <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClassCategory">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblClassCourse">
+        <PropertyRef Name="CourseCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblClassCourse_tblEducatorDetails">
+    <End Role="tblEducatorDetails" Type="Self.tblEducatorDetails" Multiplicity="0..1" />
+    <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEducatorDetails">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblClassCourse">
+        <PropertyRef Name="EducatorProfile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCourseVideos_tblClassCourse">
+    <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+    <End Role="tblCourseVideos" Type="Self.tblCourseVideos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClassCourse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblCourseVideos">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEnquiry_tblClassCourse">
+    <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+    <End Role="tblEnquiry" Type="Self.tblEnquiry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClassCourse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblEnquiry">
+        <PropertyRef Name="InterestedIn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblRefund_tblStudentData">
+    <End Role="tblStudentData" Type="Self.tblStudentData" Multiplicity="1" />
+    <End Role="tblRefund" Type="Self.tblRefund" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStudentData">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblRefund">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblRefund_tblTrnMode">
+    <End Role="tblTrnMode" Type="Self.tblTrnMode" Multiplicity="1" />
+    <End Role="tblRefund" Type="Self.tblRefund" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTrnMode">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblRefund">
+        <PropertyRef Name="TrnMode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSales_tblClassCourse">
+    <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+    <End Role="tblSales" Type="Self.tblSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClassCourse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblSales">
+        <PropertyRef Name="SubscribedCourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSales_tblStudentData">
+    <End Role="tblStudentData" Type="Self.tblStudentData" Multiplicity="1" />
+    <End Role="tblSales" Type="Self.tblSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStudentData">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblSales">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSalesReturn_tblClassCourse">
+    <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+    <End Role="tblSalesReturn" Type="Self.tblSalesReturn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClassCourse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblSalesReturn">
+        <PropertyRef Name="SubscribedCourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSalesReturn_tblStudentData">
+    <End Role="tblStudentData" Type="Self.tblStudentData" Multiplicity="1" />
+    <End Role="tblSalesReturn" Type="Self.tblSalesReturn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStudentData">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblSalesReturn">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblStudentData_tblClassCourse">
+    <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+    <End Role="tblStudentData" Type="Self.tblStudentData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClassCourse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblStudentData">
+        <PropertyRef Name="SubscribedCourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTransaction_tblStudentData">
+    <End Role="tblStudentData" Type="Self.tblStudentData" Multiplicity="1" />
+    <End Role="tblTransaction" Type="Self.tblTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStudentData">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblTransaction">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTransaction_tblTrnMode">
+    <End Role="tblTrnMode" Type="Self.tblTrnMode" Multiplicity="1" />
+    <End Role="tblTransaction" Type="Self.tblTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTrnMode">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tblTransaction">
+        <PropertyRef Name="TrnMode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_techedModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAnnouncement" EntityType="Self.tblAnnouncement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblClassCategory" EntityType="Self.tblClassCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblClassCourse" EntityType="Self.tblClassCourse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCourseVideos" EntityType="Self.tblCourseVideos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEducatorDetails" EntityType="Self.tblEducatorDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEnquiry" EntityType="Self.tblEnquiry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblIdPassword" EntityType="Self.tblIdPassword" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRefund" EntityType="Self.tblRefund" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSales" EntityType="Self.tblSales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSalesReturn" EntityType="Self.tblSalesReturn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStudentData" EntityType="Self.tblStudentData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTransaction" EntityType="Self.tblTransaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTrnMode" EntityType="Self.tblTrnMode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CollectionReceivedView" EntityType="Self.CollectionReceivedView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CollectionReceivedView].[TrnDate] AS [TrnDate], 
+    [CollectionReceivedView].[StudentId] AS [StudentId], 
+    [CollectionReceivedView].[StudentName] AS [StudentName], 
+    [CollectionReceivedView].[CourseName] AS [CourseName], 
+    [CollectionReceivedView].[Amount] AS [Amount]
+    FROM [dbo].[CollectionReceivedView] AS [CollectionReceivedView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PaymentRefundView" EntityType="Self.PaymentRefundView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PaymentRefundView].[TrnDate] AS [TrnDate], 
+    [PaymentRefundView].[StudentId] AS [StudentId], 
+    [PaymentRefundView].[StudentName] AS [StudentName], 
+    [PaymentRefundView].[CourseName] AS [CourseName], 
+    [PaymentRefundView].[Amount] AS [Amount], 
+    [PaymentRefundView].[Narration] AS [Narration]
+    FROM [dbo].[PaymentRefundView] AS [PaymentRefundView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SalesReturnView" EntityType="Self.SalesReturnView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SalesReturnView].[TrnDate] AS [TrnDate], 
+    [SalesReturnView].[StudentId] AS [StudentId], 
+    [SalesReturnView].[StudentName] AS [StudentName], 
+    [SalesReturnView].[CourseName] AS [CourseName], 
+    [SalesReturnView].[CourseFees] AS [CourseFees], 
+    [SalesReturnView].[Naration] AS [Naration]
+    FROM [dbo].[SalesReturnView] AS [SalesReturnView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SalesView" EntityType="Self.SalesView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SalesView].[id] AS [id], 
+    [SalesView].[TrnDate] AS [TrnDate], 
+    [SalesView].[StudentId] AS [StudentId], 
+    [SalesView].[StudentName] AS [StudentName], 
+    [SalesView].[CourseName] AS [CourseName], 
+    [SalesView].[CourseFees] AS [CourseFees], 
+    [SalesView].[RunningTotal] AS [RunningTotal]
+    FROM [dbo].[SalesView] AS [SalesView]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_tblAnnouncement_tblClassCourse" Association="Self.FK_tblAnnouncement_tblClassCourse">
+      <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+      <End Role="tblAnnouncement" EntitySet="tblAnnouncement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblClassCourse_tblClassCategory" Association="Self.FK_tblClassCourse_tblClassCategory">
+      <End Role="tblClassCategory" EntitySet="tblClassCategory" />
+      <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblClassCourse_tblEducatorDetails" Association="Self.FK_tblClassCourse_tblEducatorDetails">
+      <End Role="tblEducatorDetails" EntitySet="tblEducatorDetails" />
+      <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCourseVideos_tblClassCourse" Association="Self.FK_tblCourseVideos_tblClassCourse">
+      <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+      <End Role="tblCourseVideos" EntitySet="tblCourseVideos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEnquiry_tblClassCourse" Association="Self.FK_tblEnquiry_tblClassCourse">
+      <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+      <End Role="tblEnquiry" EntitySet="tblEnquiry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblRefund_tblStudentData" Association="Self.FK_tblRefund_tblStudentData">
+      <End Role="tblStudentData" EntitySet="tblStudentData" />
+      <End Role="tblRefund" EntitySet="tblRefund" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblRefund_tblTrnMode" Association="Self.FK_tblRefund_tblTrnMode">
+      <End Role="tblTrnMode" EntitySet="tblTrnMode" />
+      <End Role="tblRefund" EntitySet="tblRefund" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSales_tblClassCourse" Association="Self.FK_tblSales_tblClassCourse">
+      <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+      <End Role="tblSales" EntitySet="tblSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSales_tblStudentData" Association="Self.FK_tblSales_tblStudentData">
+      <End Role="tblStudentData" EntitySet="tblStudentData" />
+      <End Role="tblSales" EntitySet="tblSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSalesReturn_tblClassCourse" Association="Self.FK_tblSalesReturn_tblClassCourse">
+      <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+      <End Role="tblSalesReturn" EntitySet="tblSalesReturn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSalesReturn_tblStudentData" Association="Self.FK_tblSalesReturn_tblStudentData">
+      <End Role="tblStudentData" EntitySet="tblStudentData" />
+      <End Role="tblSalesReturn" EntitySet="tblSalesReturn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblStudentData_tblClassCourse" Association="Self.FK_tblStudentData_tblClassCourse">
+      <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+      <End Role="tblStudentData" EntitySet="tblStudentData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTransaction_tblStudentData" Association="Self.FK_tblTransaction_tblStudentData">
+      <End Role="tblStudentData" EntitySet="tblStudentData" />
+      <End Role="tblTransaction" EntitySet="tblTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTransaction_tblTrnMode" Association="Self.FK_tblTransaction_tblTrnMode">
+      <End Role="tblTrnMode" EntitySet="tblTrnMode" />
+      <End Role="tblTransaction" EntitySet="tblTransaction" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

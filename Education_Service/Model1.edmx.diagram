@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d4f0c0b7e46649e9b32d8f60314430c1" Name="Diagram1" ZoomLevel="109">
+        <EntityTypeShape EntityType="DB_techedModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_techedModel.tblAnnouncement" Width="1.5" PointX="5.25" PointY="19.625" />
+        <EntityTypeShape EntityType="DB_techedModel.tblClassCategory" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="DB_techedModel.tblClassCourse" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="DB_techedModel.tblCourseVideo" Width="1.5" PointX="5.25" PointY="6" />
+        <EntityTypeShape EntityType="DB_techedModel.tblEducatorDetail" Width="1.5" PointX="0.75" PointY="10.875" />
+        <EntityTypeShape EntityType="DB_techedModel.tblEnquiry" Width="1.5" PointX="5.25" PointY="22.25" />
+        <EntityTypeShape EntityType="DB_techedModel.tblIdPassword" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_techedModel.tblRefund" Width="1.5" PointX="7.5" PointY="9.375" />
+        <EntityTypeShape EntityType="DB_techedModel.tblSale" Width="1.5" PointX="10.5" PointY="13.625" />
+        <EntityTypeShape EntityType="DB_techedModel.tblSalesReturn" Width="1.5" PointX="7.5" PointY="13.5" />
+        <EntityTypeShape EntityType="DB_techedModel.tblStudentData" Width="1.5" PointX="5.25" PointY="8.625" />
+        <EntityTypeShape EntityType="DB_techedModel.tblTransaction" Width="1.5" PointX="10.5" PointY="9.375" />
+        <EntityTypeShape EntityType="DB_techedModel.tblTrnMode" Width="1.5" PointX="5.25" PointY="13.875" />
+        <EntityTypeShape EntityType="DB_techedModel.CollectionReceivedView" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DB_techedModel.PaymentRefundView" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_techedModel.SalesReturnView" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_techedModel.SalesView" Width="1.5" PointX="7.75" PointY="3.75" />
+        <AssociationConnector Association="DB_techedModel.FK_tblAnnouncement_tblClassCourse" />
+        <AssociationConnector Association="DB_techedModel.FK_tblClassCourse_tblClassCategory" />
+        <AssociationConnector Association="DB_techedModel.FK_tblClassCourse_tblEducatorDetails" />
+        <AssociationConnector Association="DB_techedModel.FK_tblCourseVideos_tblClassCourse" />
+        <AssociationConnector Association="DB_techedModel.FK_tblEnquiry_tblClassCourse" />
+        <AssociationConnector Association="DB_techedModel.FK_tblSales_tblClassCourse" />
+        <AssociationConnector Association="DB_techedModel.FK_tblSalesReturn_tblClassCourse" />
+        <AssociationConnector Association="DB_techedModel.FK_tblStudentData_tblClassCourse" />
+        <AssociationConnector Association="DB_techedModel.FK_tblRefund_tblStudentData" />
+        <AssociationConnector Association="DB_techedModel.FK_tblRefund_tblTrnMode" />
+        <AssociationConnector Association="DB_techedModel.FK_tblSales_tblStudentData" />
+        <AssociationConnector Association="DB_techedModel.FK_tblSalesReturn_tblStudentData" />
+        <AssociationConnector Association="DB_techedModel.FK_tblTransaction_tblStudentData" />
+        <AssociationConnector Association="DB_techedModel.FK_tblTransaction_tblTrnMode" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

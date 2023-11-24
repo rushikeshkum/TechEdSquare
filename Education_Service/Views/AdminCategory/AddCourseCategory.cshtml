@@ -1,0 +1,118 @@
+﻿@model Education_Service.tblClassCategory
+
+@{
+    ViewBag.Title = "AddCourseCategory";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script>
+    function addCategory(event) {
+        event.preventDefault();
+        var categoryName = document.getElementById("exampleInputName1").value;
+        var table = document.getElementById("categoryTable").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow(table.rows.length);
+
+        // Assuming you have an ID for each category, you can increment it dynamically.
+        var id = table.rows.length;
+
+        // Insert data into the new row
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+
+        cell1.innerHTML = id;
+        cell2.innerHTML = categoryName;
+        cell3.innerHTML = '<button class="btn btn-warning btn-sm" onclick="editCategory(this)">Edit</button>' +
+            '<button class="btn btn-danger btn-sm" onclick="removeCategory(this)">Remove</button>';
+
+        clearForm();
+    }
+
+    function editCategory(button) {
+        var row = button.parentNode.parentNode;
+        var categoryName = row.cells[1].innerHTML;
+        var newName = prompt("Edit Category Name:", categoryName);
+        if (newName !== null) {
+            row.cells[1].innerHTML = newName;
+        }
+    }
+
+    function removeCategory(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+
+    function clearForm() {
+        document.getElementById("exampleInputName1").value = "";
+    }
+
+</script>
+
+<h2>AddCourseCategory</h2>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    
+        <div class="col-4">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputName1">Add Course Category</label>
+
+                            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Category Name", @required = "" } })
+                            @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+                        </div>
+                        <input type="submit" value="Save" class="btn btn-gradient-primary me-2" />
+                        <button type="button" class="btn btn-light" onclick="clearForm()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CategoryName)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in (List<tblClassCategory>)ViewBag.category)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "AddCourseCategory", new { id = item.id }) |
+                            @Html.ActionLink("Delete","Delete", new { id = item.id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+    
+}
+

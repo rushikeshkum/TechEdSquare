@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "MakeAnnouncement";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>MakeAnnouncement</h2>
+
+
+
+<div class="content-wrapper">
+    <style>
+
+        label {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 1em;
+        }
+
+        .form-group {
+            padding-right: 80px;
+            padding-left: 10px;
+        }
+    </style>
+    <div class="col-3"></div>
+    <div class="col-9 grid-margin stretch-card">
+        <div class="card " style="margin-left: 80px; background-color: #DAD8F1">
+            <div class="card-body">
+
+
+                <form class="forms-sample ">
+                    <div class="form-group ">
+                        <label for="exampleInputName1">Announcement Title</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName1">Announcement Discription</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter Mobile No">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Select date</label>
+                        <input type="date" class="form-control" id="birthday" placeholder="Select DOB">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Select Course Name</label>
+                        <select class="form-control form-control-lg" id="exampleFormControlSelect2">
+
+                            <option>Full Stack Devlopement</option>
+                            <option>UI/UX</option>
+                            <option>MERN stack</option>
+                            <option>Cyber Security</option>
+                            <option>Machine Learning</option>
+                            <option>Cloud Computing</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Message</label>
+                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="">
+                    </div>
+
+            <button type="submit" class="btn btn-gradient-primary me-2">Make Announcement</button>
+            <button class="btn btn-light">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

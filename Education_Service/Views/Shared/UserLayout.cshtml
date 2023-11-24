@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title</title>
+    <!--====== Title ======-->
+    <title>Edubin - LMS Education HTML Template</title>
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="~/images/favicon.png" type="image/png">
+
+    <!--====== Slick css ======-->
+
+    <link href="~/css/slick.css" rel="stylesheet" />
+    <!--====== Animate css ======-->
+    <link rel="stylesheet" href="~/css/animate.css">
+
+    <!--====== Nice Select css ======-->
+    <link rel="stylesheet" href="~/css/nice-select.css">
+
+    <!--====== Nice Number css ======-->
+    <link rel="stylesheet" href="~/css/jquery.nice-number.min.css">
+
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+
+    <!--====== Fontawesome css ======-->
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+
+    <!--====== Default css ======-->
+
+    <link href="~/css/default.css" rel="stylesheet" />
+    <!--====== Style css ======-->
+
+    <link href="~/css/style.css" rel="stylesheet" />
+    <!--====== Responsive css ======-->
+
+    <link href="~/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+
+    @Html.Partial("_NavbarUser") @*Calling Partial navbar*@
+    <div>
+        @RenderBody()
+    </div>
+    @Html.Partial("_FooterUser") @*Calling Partial Footer *@
+</body>
+</html>

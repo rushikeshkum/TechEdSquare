@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_techedModelStoreContainer" CdmEntityContainer="DB_techedEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DB_techedModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAnnouncements">
+      <EntityTypeMapping TypeName="DB_techedModel.tblAnnouncement">
+        <MappingFragment StoreEntitySet="tblAnnouncement">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblClassCategories">
+      <EntityTypeMapping TypeName="DB_techedModel.tblClassCategory">
+        <MappingFragment StoreEntitySet="tblClassCategory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblClassCourses">
+      <EntityTypeMapping TypeName="DB_techedModel.tblClassCourse">
+        <MappingFragment StoreEntitySet="tblClassCourse">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="CourseCategory" ColumnName="CourseCategory" />
+          <ScalarProperty Name="BatchInfo" ColumnName="BatchInfo" />
+          <ScalarProperty Name="EducatorProfile" ColumnName="EducatorProfile" />
+          <ScalarProperty Name="CourseDiscription" ColumnName="CourseDiscription" />
+          <ScalarProperty Name="DetailedDiscription" ColumnName="DetailedDiscription" />
+          <ScalarProperty Name="CourseDuration" ColumnName="CourseDuration" />
+          <ScalarProperty Name="CourseFees" ColumnName="CourseFees" />
+          <ScalarProperty Name="CoursePreviewLink" ColumnName="CoursePreviewLink" />
+          <ScalarProperty Name="CourseStatus" ColumnName="CourseStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCourseVideos">
+      <EntityTypeMapping TypeName="DB_techedModel.tblCourseVideo">
+        <MappingFragment StoreEntitySet="tblCourseVideos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="VideoTitle" ColumnName="VideoTitle" />
+          <ScalarProperty Name="VideoLink" ColumnName="VideoLink" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEducatorDetails">
+      <EntityTypeMapping TypeName="DB_techedModel.tblEducatorDetail">
+        <MappingFragment StoreEntitySet="tblEducatorDetails">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="EducatorName" ColumnName="EducatorName" />
+          <ScalarProperty Name="EducatorProfile" ColumnName="EducatorProfile" />
+          <ScalarProperty Name="DetailedProfile" ColumnName="DetailedProfile" />
+          <ScalarProperty Name="EducatorMailId" ColumnName="EducatorMailId" />
+          <ScalarProperty Name="EducatorMobile" ColumnName="EducatorMobile" />
+          <ScalarProperty Name="EducatorPhoto" ColumnName="EducatorPhoto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEnquiries">
+      <EntityTypeMapping TypeName="DB_techedModel.tblEnquiry">
+        <MappingFragment StoreEntitySet="tblEnquiry">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="InterestedIn" ColumnName="InterestedIn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblIdPasswords">
+      <EntityTypeMapping TypeName="DB_techedModel.tblIdPassword">
+        <MappingFragment StoreEntitySet="tblIdPassword">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRefunds">
+      <EntityTypeMapping TypeName="DB_techedModel.tblRefund">
+        <MappingFragment StoreEntitySet="tblRefund">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="TrnMode" ColumnName="TrnMode" />
+          <ScalarProperty Name="TrnType" ColumnName="TrnType" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Narration" ColumnName="Narration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSales">
+      <EntityTypeMapping TypeName="DB_techedModel.tblSale">
+        <MappingFragment StoreEntitySet="tblSales">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="SubscribedCourseId" ColumnName="SubscribedCourseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSalesReturns">
+      <EntityTypeMapping TypeName="DB_techedModel.tblSalesReturn">
+        <MappingFragment StoreEntitySet="tblSalesReturn">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="SubscribedCourseId" ColumnName="SubscribedCourseId" />
+          <ScalarProperty Name="Naration" ColumnName="Naration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStudentDatas">
+      <EntityTypeMapping TypeName="DB_techedModel.tblStudentData">
+        <MappingFragment StoreEntitySet="tblStudentData">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentMobileNo" ColumnName="StudentMobileNo" />
+          <ScalarProperty Name="StudentMailId" ColumnName="StudentMailId" />
+          <ScalarProperty Name="StudentDOB" ColumnName="StudentDOB" />
+          <ScalarProperty Name="StudentPAN" ColumnName="StudentPAN" />
+          <ScalarProperty Name="StudentAddress" ColumnName="StudentAddress" />
+          <ScalarProperty Name="StudentCourseUsername" ColumnName="StudentCourseUsername" />
+          <ScalarProperty Name="SubscribedCourseId" ColumnName="SubscribedCourseId" />
+          <ScalarProperty Name="StudentLoginPassword" ColumnName="StudentLoginPassword" />
+          <ScalarProperty Name="StudentStatus" ColumnName="StudentStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTransactions">
+      <EntityTypeMapping TypeName="DB_techedModel.tblTransaction">
+        <MappingFragment StoreEntitySet="tblTransaction">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="TrnMode" ColumnName="TrnMode" />
+          <ScalarProperty Name="TrnType" ColumnName="TrnType" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Narration" ColumnName="Narration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTrnModes">
+      <EntityTypeMapping TypeName="DB_techedModel.tblTrnMode">
+        <MappingFragment StoreEntitySet="tblTrnMode">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TrnMode" ColumnName="TrnMode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CollectionReceivedViews">
+      <EntityTypeMapping TypeName="DB_techedModel.CollectionReceivedView">
+        <MappingFragment StoreEntitySet="CollectionReceivedView">
+          <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentRefundViews">
+      <EntityTypeMapping TypeName="DB_techedModel.PaymentRefundView">
+        <MappingFragment StoreEntitySet="PaymentRefundView">
+          <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Narration" ColumnName="Narration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesReturnViews">
+      <EntityTypeMapping TypeName="DB_techedModel.SalesReturnView">
+        <MappingFragment StoreEntitySet="SalesReturnView">
+          <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="CourseFees" ColumnName="CourseFees" />
+          <ScalarProperty Name="Naration" ColumnName="Naration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesViews">
+      <EntityTypeMapping TypeName="DB_techedModel.SalesView">
+        <MappingFragment StoreEntitySet="SalesView">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="CourseFees" ColumnName="CourseFees" />
+          <ScalarProperty Name="RunningTotal" ColumnName="RunningTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

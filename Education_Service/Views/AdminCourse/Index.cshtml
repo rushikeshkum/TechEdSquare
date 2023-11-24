@@ -1,0 +1,62 @@
+﻿
+@model IEnumerable<Education_Service.tblClassCourse>
+
+@{
+    ViewBag.Title = "All Course";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>AllCourse</h2>
+@*Header code*@
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white me-2">
+                <i class="mdi mdi-home"></i>
+            </span>
+        </h3>
+
+        <a href="/AdminCourse/Addcourse" class="btn btn-block btn-lg btn-gradient-primary mt-4y"> Add new course</a>
+        @*<button class="btn btn-block btn-lg btn-gradient-primary mt-4"><i href=""></i> </button>*@
+
+    </div>
+
+
+
+    <br />
+    <div class="row">
+
+        @*1th card*@
+        @foreach (var item in (List<tblClassCourse>)ViewBag.Allcourse)
+        {
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="https://images2.alphacoders.com/133/1336516.png" class="w-100 h-5">
+                        <br />
+                        <br />
+                        <a href="@Url.Action("Index2", "AdminVideo", new { courseId = item.id })">
+                            <h2 class="card-title">@Html.DisplayFor(modelItem => item.CourseName)</h2>
+                        </a>
+
+                        <ul class="list-ticked">
+                            <li class="container-fluid">
+                                @Html.DisplayFor(modelItem => item.CourseDiscription)
+                            </li>
+                        </ul>
+                        <div class="text-right">
+                            <!-- Added text-right class -->
+                            @Html.ActionLink("Edit", "AddCourse", new { id = item.id }, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+
+
+
+
+    </div>

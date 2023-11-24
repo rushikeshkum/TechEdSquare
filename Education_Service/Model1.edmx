@@ -1,0 +1,1254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_techedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAnnouncement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblClassCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblClassCourse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseCategory" Type="int" Nullable="false" />
+          <Property Name="BatchInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EducatorProfile" Type="int" />
+          <Property Name="CourseDiscription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DetailedDiscription" Type="nvarchar(max)" />
+          <Property Name="CourseDuration" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CourseFees" Type="float" Nullable="false" />
+          <Property Name="CoursePreviewLink" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CourseStatus" Type="bit" />
+          <Property Name="CourseImage" Type="binary" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="tblCourseVideos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="VideoTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VideoLink" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEducatorDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EducatorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EducatorProfile" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DetailedProfile" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EducatorMailId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EducatorMobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="EducatorPhoto" Type="binary" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="tblEnquiry">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InterestedIn" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblIdPassword">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRefund">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrnDate" Type="date" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="TrnMode" Type="int" Nullable="false" />
+          <Property Name="TrnType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="Narration" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrnDate" Type="date" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="SubscribedCourseId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSalesReturn">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrnDate" Type="date" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="SubscribedCourseId" Type="int" Nullable="false" />
+          <Property Name="Naration" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblStudentData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentMobileNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentMailId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentDOB" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentPAN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentCourseUsername" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscribedCourseId" Type="int" Nullable="false" />
+          <Property Name="StudentLoginPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentStatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTransaction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrnDate" Type="date" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="TrnMode" Type="int" Nullable="false" />
+          <Property Name="TrnType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="Narration" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTrnMode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrnMode" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_teched.dbo.CollectionReceivedView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CollectionReceivedView">
+          <Key>
+            <PropertyRef Name="TrnDate" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="TrnDate" Type="date" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DB_teched.dbo.CoursesSoldWorth' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CoursesSoldWorth">
+          <Property Name="SalesTotalAmount" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DB_teched.dbo.CoursesUnsubscribedWorth' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CoursesUnsubscribedWorth">
+          <Property Name="SalesReturnTotalAmount" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DB_teched.dbo.NetSalesAmount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="NetSalesAmount">
+          <Property Name="netSales" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_teched.dbo.PaymentRefundView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PaymentRefundView">
+          <Key>
+            <PropertyRef Name="TrnDate" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Narration" />
+          </Key>
+          <Property Name="TrnDate" Type="date" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="Narration" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_teched.dbo.SalesReturnView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SalesReturnView">
+          <Key>
+            <PropertyRef Name="TrnDate" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="CourseFees" />
+            <PropertyRef Name="Naration" />
+          </Key>
+          <Property Name="TrnDate" Type="date" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseFees" Type="float" Nullable="false" />
+          <Property Name="Naration" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_teched.dbo.SalesView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SalesView">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="TrnDate" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="CourseFees" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="TrnDate" Type="date" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseFees" Type="float" Nullable="false" />
+          <Property Name="RunningTotal" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DB_teched.dbo.trialSalesDiff' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="trialSalesDiff">
+          <Property Name="SalesTotalAmount" Type="float" />
+          <Property Name="SalesReturnTotalAmount" Type="float" />
+        </EntityType>-->
+        <Association Name="FK_tblAnnouncement_tblClassCourse">
+          <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+          <End Role="tblAnnouncement" Type="Self.tblAnnouncement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblAnnouncement">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClassCourse_tblClassCategory">
+          <End Role="tblClassCategory" Type="Self.tblClassCategory" Multiplicity="1" />
+          <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCategory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblClassCourse">
+              <PropertyRef Name="CourseCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClassCourse_tblEducatorDetails">
+          <End Role="tblEducatorDetails" Type="Self.tblEducatorDetails" Multiplicity="0..1" />
+          <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEducatorDetails">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblClassCourse">
+              <PropertyRef Name="EducatorProfile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourseVideos_tblClassCourse">
+          <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+          <End Role="tblCourseVideos" Type="Self.tblCourseVideos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblCourseVideos">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEnquiry_tblClassCourse">
+          <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+          <End Role="tblEnquiry" Type="Self.tblEnquiry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblEnquiry">
+              <PropertyRef Name="InterestedIn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRefund_tblStudentData">
+          <End Role="tblStudentData" Type="Self.tblStudentData" Multiplicity="1" />
+          <End Role="tblRefund" Type="Self.tblRefund" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudentData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblRefund">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRefund_tblTrnMode">
+          <End Role="tblTrnMode" Type="Self.tblTrnMode" Multiplicity="1" />
+          <End Role="tblRefund" Type="Self.tblRefund" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTrnMode">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblRefund">
+              <PropertyRef Name="TrnMode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_tblClassCourse">
+          <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+          <End Role="tblSales" Type="Self.tblSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblSales">
+              <PropertyRef Name="SubscribedCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_tblStudentData">
+          <End Role="tblStudentData" Type="Self.tblStudentData" Multiplicity="1" />
+          <End Role="tblSales" Type="Self.tblSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudentData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblSales">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSalesReturn_tblClassCourse">
+          <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+          <End Role="tblSalesReturn" Type="Self.tblSalesReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblSalesReturn">
+              <PropertyRef Name="SubscribedCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSalesReturn_tblStudentData">
+          <End Role="tblStudentData" Type="Self.tblStudentData" Multiplicity="1" />
+          <End Role="tblSalesReturn" Type="Self.tblSalesReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudentData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblSalesReturn">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStudentData_tblClassCourse">
+          <End Role="tblClassCourse" Type="Self.tblClassCourse" Multiplicity="1" />
+          <End Role="tblStudentData" Type="Self.tblStudentData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblStudentData">
+              <PropertyRef Name="SubscribedCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTransaction_tblStudentData">
+          <End Role="tblStudentData" Type="Self.tblStudentData" Multiplicity="1" />
+          <End Role="tblTransaction" Type="Self.tblTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudentData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblTransaction">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTransaction_tblTrnMode">
+          <End Role="tblTrnMode" Type="Self.tblTrnMode" Multiplicity="1" />
+          <End Role="tblTransaction" Type="Self.tblTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTrnMode">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblTransaction">
+              <PropertyRef Name="TrnMode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_techedModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAnnouncement" EntityType="Self.tblAnnouncement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClassCategory" EntityType="Self.tblClassCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClassCourse" EntityType="Self.tblClassCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCourseVideos" EntityType="Self.tblCourseVideos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEducatorDetails" EntityType="Self.tblEducatorDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEnquiry" EntityType="Self.tblEnquiry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblIdPassword" EntityType="Self.tblIdPassword" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRefund" EntityType="Self.tblRefund" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSales" EntityType="Self.tblSales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSalesReturn" EntityType="Self.tblSalesReturn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStudentData" EntityType="Self.tblStudentData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTransaction" EntityType="Self.tblTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTrnMode" EntityType="Self.tblTrnMode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CollectionReceivedView" EntityType="Self.CollectionReceivedView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CollectionReceivedView].[TrnDate] AS [TrnDate], 
+    [CollectionReceivedView].[StudentId] AS [StudentId], 
+    [CollectionReceivedView].[StudentName] AS [StudentName], 
+    [CollectionReceivedView].[CourseName] AS [CourseName], 
+    [CollectionReceivedView].[Amount] AS [Amount]
+    FROM [dbo].[CollectionReceivedView] AS [CollectionReceivedView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PaymentRefundView" EntityType="Self.PaymentRefundView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PaymentRefundView].[TrnDate] AS [TrnDate], 
+    [PaymentRefundView].[StudentId] AS [StudentId], 
+    [PaymentRefundView].[StudentName] AS [StudentName], 
+    [PaymentRefundView].[CourseName] AS [CourseName], 
+    [PaymentRefundView].[Amount] AS [Amount], 
+    [PaymentRefundView].[Narration] AS [Narration]
+    FROM [dbo].[PaymentRefundView] AS [PaymentRefundView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SalesReturnView" EntityType="Self.SalesReturnView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SalesReturnView].[TrnDate] AS [TrnDate], 
+    [SalesReturnView].[StudentId] AS [StudentId], 
+    [SalesReturnView].[StudentName] AS [StudentName], 
+    [SalesReturnView].[CourseName] AS [CourseName], 
+    [SalesReturnView].[CourseFees] AS [CourseFees], 
+    [SalesReturnView].[Naration] AS [Naration]
+    FROM [dbo].[SalesReturnView] AS [SalesReturnView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SalesView" EntityType="Self.SalesView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SalesView].[id] AS [id], 
+    [SalesView].[TrnDate] AS [TrnDate], 
+    [SalesView].[StudentId] AS [StudentId], 
+    [SalesView].[StudentName] AS [StudentName], 
+    [SalesView].[CourseName] AS [CourseName], 
+    [SalesView].[CourseFees] AS [CourseFees], 
+    [SalesView].[RunningTotal] AS [RunningTotal]
+    FROM [dbo].[SalesView] AS [SalesView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tblAnnouncement_tblClassCourse" Association="Self.FK_tblAnnouncement_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+            <End Role="tblAnnouncement" EntitySet="tblAnnouncement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClassCourse_tblClassCategory" Association="Self.FK_tblClassCourse_tblClassCategory">
+            <End Role="tblClassCategory" EntitySet="tblClassCategory" />
+            <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClassCourse_tblEducatorDetails" Association="Self.FK_tblClassCourse_tblEducatorDetails">
+            <End Role="tblEducatorDetails" EntitySet="tblEducatorDetails" />
+            <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourseVideos_tblClassCourse" Association="Self.FK_tblCourseVideos_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+            <End Role="tblCourseVideos" EntitySet="tblCourseVideos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEnquiry_tblClassCourse" Association="Self.FK_tblEnquiry_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+            <End Role="tblEnquiry" EntitySet="tblEnquiry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRefund_tblStudentData" Association="Self.FK_tblRefund_tblStudentData">
+            <End Role="tblStudentData" EntitySet="tblStudentData" />
+            <End Role="tblRefund" EntitySet="tblRefund" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRefund_tblTrnMode" Association="Self.FK_tblRefund_tblTrnMode">
+            <End Role="tblTrnMode" EntitySet="tblTrnMode" />
+            <End Role="tblRefund" EntitySet="tblRefund" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_tblClassCourse" Association="Self.FK_tblSales_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+            <End Role="tblSales" EntitySet="tblSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_tblStudentData" Association="Self.FK_tblSales_tblStudentData">
+            <End Role="tblStudentData" EntitySet="tblStudentData" />
+            <End Role="tblSales" EntitySet="tblSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSalesReturn_tblClassCourse" Association="Self.FK_tblSalesReturn_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+            <End Role="tblSalesReturn" EntitySet="tblSalesReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSalesReturn_tblStudentData" Association="Self.FK_tblSalesReturn_tblStudentData">
+            <End Role="tblStudentData" EntitySet="tblStudentData" />
+            <End Role="tblSalesReturn" EntitySet="tblSalesReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStudentData_tblClassCourse" Association="Self.FK_tblStudentData_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourse" />
+            <End Role="tblStudentData" EntitySet="tblStudentData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTransaction_tblStudentData" Association="Self.FK_tblTransaction_tblStudentData">
+            <End Role="tblStudentData" EntitySet="tblStudentData" />
+            <End Role="tblTransaction" EntitySet="tblTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTransaction_tblTrnMode" Association="Self.FK_tblTransaction_tblTrnMode">
+            <End Role="tblTrnMode" EntitySet="tblTrnMode" />
+            <End Role="tblTransaction" EntitySet="tblTransaction" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_techedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_techedEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="DB_techedModel.sysdiagram" />
+          <EntitySet Name="tblAnnouncements" EntityType="DB_techedModel.tblAnnouncement" />
+          <EntitySet Name="tblClassCategories" EntityType="DB_techedModel.tblClassCategory" />
+          <EntitySet Name="tblClassCourses" EntityType="DB_techedModel.tblClassCourse" />
+          <EntitySet Name="tblCourseVideos" EntityType="DB_techedModel.tblCourseVideo" />
+          <EntitySet Name="tblEducatorDetails" EntityType="DB_techedModel.tblEducatorDetail" />
+          <EntitySet Name="tblEnquiries" EntityType="DB_techedModel.tblEnquiry" />
+          <EntitySet Name="tblIdPasswords" EntityType="DB_techedModel.tblIdPassword" />
+          <EntitySet Name="tblRefunds" EntityType="DB_techedModel.tblRefund" />
+          <EntitySet Name="tblSales" EntityType="DB_techedModel.tblSale" />
+          <EntitySet Name="tblSalesReturns" EntityType="DB_techedModel.tblSalesReturn" />
+          <EntitySet Name="tblStudentDatas" EntityType="DB_techedModel.tblStudentData" />
+          <EntitySet Name="tblTransactions" EntityType="DB_techedModel.tblTransaction" />
+          <EntitySet Name="tblTrnModes" EntityType="DB_techedModel.tblTrnMode" />
+          <EntitySet Name="CollectionReceivedViews" EntityType="DB_techedModel.CollectionReceivedView" />
+          <EntitySet Name="PaymentRefundViews" EntityType="DB_techedModel.PaymentRefundView" />
+          <EntitySet Name="SalesReturnViews" EntityType="DB_techedModel.SalesReturnView" />
+          <EntitySet Name="SalesViews" EntityType="DB_techedModel.SalesView" />
+          <AssociationSet Name="FK_tblAnnouncement_tblClassCourse" Association="DB_techedModel.FK_tblAnnouncement_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourses" />
+            <End Role="tblAnnouncement" EntitySet="tblAnnouncements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClassCourse_tblClassCategory" Association="DB_techedModel.FK_tblClassCourse_tblClassCategory">
+            <End Role="tblClassCategory" EntitySet="tblClassCategories" />
+            <End Role="tblClassCourse" EntitySet="tblClassCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClassCourse_tblEducatorDetails" Association="DB_techedModel.FK_tblClassCourse_tblEducatorDetails">
+            <End Role="tblEducatorDetail" EntitySet="tblEducatorDetails" />
+            <End Role="tblClassCourse" EntitySet="tblClassCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourseVideos_tblClassCourse" Association="DB_techedModel.FK_tblCourseVideos_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourses" />
+            <End Role="tblCourseVideo" EntitySet="tblCourseVideos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEnquiry_tblClassCourse" Association="DB_techedModel.FK_tblEnquiry_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourses" />
+            <End Role="tblEnquiry" EntitySet="tblEnquiries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_tblClassCourse" Association="DB_techedModel.FK_tblSales_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourses" />
+            <End Role="tblSale" EntitySet="tblSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSalesReturn_tblClassCourse" Association="DB_techedModel.FK_tblSalesReturn_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourses" />
+            <End Role="tblSalesReturn" EntitySet="tblSalesReturns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStudentData_tblClassCourse" Association="DB_techedModel.FK_tblStudentData_tblClassCourse">
+            <End Role="tblClassCourse" EntitySet="tblClassCourses" />
+            <End Role="tblStudentData" EntitySet="tblStudentDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRefund_tblStudentData" Association="DB_techedModel.FK_tblRefund_tblStudentData">
+            <End Role="tblStudentData" EntitySet="tblStudentDatas" />
+            <End Role="tblRefund" EntitySet="tblRefunds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRefund_tblTrnMode" Association="DB_techedModel.FK_tblRefund_tblTrnMode">
+            <End Role="tblTrnMode" EntitySet="tblTrnModes" />
+            <End Role="tblRefund" EntitySet="tblRefunds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_tblStudentData" Association="DB_techedModel.FK_tblSales_tblStudentData">
+            <End Role="tblStudentData" EntitySet="tblStudentDatas" />
+            <End Role="tblSale" EntitySet="tblSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSalesReturn_tblStudentData" Association="DB_techedModel.FK_tblSalesReturn_tblStudentData">
+            <End Role="tblStudentData" EntitySet="tblStudentDatas" />
+            <End Role="tblSalesReturn" EntitySet="tblSalesReturns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTransaction_tblStudentData" Association="DB_techedModel.FK_tblTransaction_tblStudentData">
+            <End Role="tblStudentData" EntitySet="tblStudentDatas" />
+            <End Role="tblTransaction" EntitySet="tblTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTransaction_tblTrnMode" Association="DB_techedModel.FK_tblTransaction_tblTrnMode">
+            <End Role="tblTrnMode" EntitySet="tblTrnModes" />
+            <End Role="tblTransaction" EntitySet="tblTransactions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAnnouncement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClassCourse" Relationship="DB_techedModel.FK_tblAnnouncement_tblClassCourse" FromRole="tblAnnouncement" ToRole="tblClassCourse" />
+        </EntityType>
+        <EntityType Name="tblClassCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClassCourses" Relationship="DB_techedModel.FK_tblClassCourse_tblClassCategory" FromRole="tblClassCategory" ToRole="tblClassCourse" />
+        </EntityType>
+        <EntityType Name="tblClassCourse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseCategory" Type="Int32" Nullable="false" />
+          <Property Name="BatchInfo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducatorProfile" Type="Int32" />
+          <Property Name="CourseDiscription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DetailedDiscription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CourseDuration" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CourseFees" Type="Double" Nullable="false" />
+          <Property Name="CoursePreviewLink" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CourseStatus" Type="Boolean" />
+          <Property Name="CourseImage" Type="Binary" MaxLength="2000" FixedLength="true" />
+          <NavigationProperty Name="tblAnnouncements" Relationship="DB_techedModel.FK_tblAnnouncement_tblClassCourse" FromRole="tblClassCourse" ToRole="tblAnnouncement" />
+          <NavigationProperty Name="tblClassCategory" Relationship="DB_techedModel.FK_tblClassCourse_tblClassCategory" FromRole="tblClassCourse" ToRole="tblClassCategory" />
+          <NavigationProperty Name="tblEducatorDetail" Relationship="DB_techedModel.FK_tblClassCourse_tblEducatorDetails" FromRole="tblClassCourse" ToRole="tblEducatorDetail" />
+          <NavigationProperty Name="tblCourseVideos" Relationship="DB_techedModel.FK_tblCourseVideos_tblClassCourse" FromRole="tblClassCourse" ToRole="tblCourseVideo" />
+          <NavigationProperty Name="tblEnquiries" Relationship="DB_techedModel.FK_tblEnquiry_tblClassCourse" FromRole="tblClassCourse" ToRole="tblEnquiry" />
+          <NavigationProperty Name="tblSales" Relationship="DB_techedModel.FK_tblSales_tblClassCourse" FromRole="tblClassCourse" ToRole="tblSale" />
+          <NavigationProperty Name="tblSalesReturns" Relationship="DB_techedModel.FK_tblSalesReturn_tblClassCourse" FromRole="tblClassCourse" ToRole="tblSalesReturn" />
+          <NavigationProperty Name="tblStudentDatas" Relationship="DB_techedModel.FK_tblStudentData_tblClassCourse" FromRole="tblClassCourse" ToRole="tblStudentData" />
+        </EntityType>
+        <EntityType Name="tblCourseVideo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="VideoTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VideoLink" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClassCourse" Relationship="DB_techedModel.FK_tblCourseVideos_tblClassCourse" FromRole="tblCourseVideo" ToRole="tblClassCourse" />
+        </EntityType>
+        <EntityType Name="tblEducatorDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EducatorName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducatorProfile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DetailedProfile" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EducatorMailId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducatorMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducatorPhoto" Type="Binary" MaxLength="8000" FixedLength="true" />
+          <NavigationProperty Name="tblClassCourses" Relationship="DB_techedModel.FK_tblClassCourse_tblEducatorDetails" FromRole="tblEducatorDetail" ToRole="tblClassCourse" />
+        </EntityType>
+        <EntityType Name="tblEnquiry">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InterestedIn" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblClassCourse" Relationship="DB_techedModel.FK_tblEnquiry_tblClassCourse" FromRole="tblEnquiry" ToRole="tblClassCourse" />
+        </EntityType>
+        <EntityType Name="tblIdPassword">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblRefund">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="TrnMode" Type="Int32" Nullable="false" />
+          <Property Name="TrnType" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Narration" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblStudentData" Relationship="DB_techedModel.FK_tblRefund_tblStudentData" FromRole="tblRefund" ToRole="tblStudentData" />
+          <NavigationProperty Name="tblTrnMode" Relationship="DB_techedModel.FK_tblRefund_tblTrnMode" FromRole="tblRefund" ToRole="tblTrnMode" />
+        </EntityType>
+        <EntityType Name="tblSale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="SubscribedCourseId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblClassCourse" Relationship="DB_techedModel.FK_tblSales_tblClassCourse" FromRole="tblSale" ToRole="tblClassCourse" />
+          <NavigationProperty Name="tblStudentData" Relationship="DB_techedModel.FK_tblSales_tblStudentData" FromRole="tblSale" ToRole="tblStudentData" />
+        </EntityType>
+        <EntityType Name="tblSalesReturn">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="SubscribedCourseId" Type="Int32" Nullable="false" />
+          <Property Name="Naration" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClassCourse" Relationship="DB_techedModel.FK_tblSalesReturn_tblClassCourse" FromRole="tblSalesReturn" ToRole="tblClassCourse" />
+          <NavigationProperty Name="tblStudentData" Relationship="DB_techedModel.FK_tblSalesReturn_tblStudentData" FromRole="tblSalesReturn" ToRole="tblStudentData" />
+        </EntityType>
+        <EntityType Name="tblStudentData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentMobileNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentMailId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentDOB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentPAN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentCourseUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscribedCourseId" Type="Int32" Nullable="false" />
+          <Property Name="StudentLoginPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentStatus" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblClassCourse" Relationship="DB_techedModel.FK_tblStudentData_tblClassCourse" FromRole="tblStudentData" ToRole="tblClassCourse" />
+          <NavigationProperty Name="tblRefunds" Relationship="DB_techedModel.FK_tblRefund_tblStudentData" FromRole="tblStudentData" ToRole="tblRefund" />
+          <NavigationProperty Name="tblSales" Relationship="DB_techedModel.FK_tblSales_tblStudentData" FromRole="tblStudentData" ToRole="tblSale" />
+          <NavigationProperty Name="tblSalesReturns" Relationship="DB_techedModel.FK_tblSalesReturn_tblStudentData" FromRole="tblStudentData" ToRole="tblSalesReturn" />
+          <NavigationProperty Name="tblTransactions" Relationship="DB_techedModel.FK_tblTransaction_tblStudentData" FromRole="tblStudentData" ToRole="tblTransaction" />
+        </EntityType>
+        <EntityType Name="tblTransaction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="TrnMode" Type="Int32" Nullable="false" />
+          <Property Name="TrnType" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Narration" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblStudentData" Relationship="DB_techedModel.FK_tblTransaction_tblStudentData" FromRole="tblTransaction" ToRole="tblStudentData" />
+          <NavigationProperty Name="tblTrnMode" Relationship="DB_techedModel.FK_tblTransaction_tblTrnMode" FromRole="tblTransaction" ToRole="tblTrnMode" />
+        </EntityType>
+        <EntityType Name="tblTrnMode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrnMode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tblRefunds" Relationship="DB_techedModel.FK_tblRefund_tblTrnMode" FromRole="tblTrnMode" ToRole="tblRefund" />
+          <NavigationProperty Name="tblTransactions" Relationship="DB_techedModel.FK_tblTransaction_tblTrnMode" FromRole="tblTrnMode" ToRole="tblTransaction" />
+        </EntityType>
+        <EntityType Name="CollectionReceivedView">
+          <Key>
+            <PropertyRef Name="TrnDate" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="TrnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentRefundView">
+          <Key>
+            <PropertyRef Name="TrnDate" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Narration" />
+          </Key>
+          <Property Name="TrnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Narration" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SalesReturnView">
+          <Key>
+            <PropertyRef Name="TrnDate" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="CourseFees" />
+            <PropertyRef Name="Naration" />
+          </Key>
+          <Property Name="TrnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseFees" Type="Double" Nullable="false" />
+          <Property Name="Naration" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SalesView">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="TrnDate" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="CourseFees" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="TrnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseFees" Type="Double" Nullable="false" />
+          <Property Name="RunningTotal" Type="Double" />
+        </EntityType>
+        <Association Name="FK_tblAnnouncement_tblClassCourse">
+          <End Type="DB_techedModel.tblClassCourse" Role="tblClassCourse" Multiplicity="1" />
+          <End Type="DB_techedModel.tblAnnouncement" Role="tblAnnouncement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblAnnouncement">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClassCourse_tblClassCategory">
+          <End Type="DB_techedModel.tblClassCategory" Role="tblClassCategory" Multiplicity="1" />
+          <End Type="DB_techedModel.tblClassCourse" Role="tblClassCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCategory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblClassCourse">
+              <PropertyRef Name="CourseCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClassCourse_tblEducatorDetails">
+          <End Type="DB_techedModel.tblEducatorDetail" Role="tblEducatorDetail" Multiplicity="0..1" />
+          <End Type="DB_techedModel.tblClassCourse" Role="tblClassCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEducatorDetail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblClassCourse">
+              <PropertyRef Name="EducatorProfile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourseVideos_tblClassCourse">
+          <End Type="DB_techedModel.tblClassCourse" Role="tblClassCourse" Multiplicity="1" />
+          <End Type="DB_techedModel.tblCourseVideo" Role="tblCourseVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblCourseVideo">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEnquiry_tblClassCourse">
+          <End Type="DB_techedModel.tblClassCourse" Role="tblClassCourse" Multiplicity="1" />
+          <End Type="DB_techedModel.tblEnquiry" Role="tblEnquiry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblEnquiry">
+              <PropertyRef Name="InterestedIn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_tblClassCourse">
+          <End Type="DB_techedModel.tblClassCourse" Role="tblClassCourse" Multiplicity="1" />
+          <End Type="DB_techedModel.tblSale" Role="tblSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblSale">
+              <PropertyRef Name="SubscribedCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSalesReturn_tblClassCourse">
+          <End Type="DB_techedModel.tblClassCourse" Role="tblClassCourse" Multiplicity="1" />
+          <End Type="DB_techedModel.tblSalesReturn" Role="tblSalesReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblSalesReturn">
+              <PropertyRef Name="SubscribedCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStudentData_tblClassCourse">
+          <End Type="DB_techedModel.tblClassCourse" Role="tblClassCourse" Multiplicity="1" />
+          <End Type="DB_techedModel.tblStudentData" Role="tblStudentData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClassCourse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblStudentData">
+              <PropertyRef Name="SubscribedCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRefund_tblStudentData">
+          <End Type="DB_techedModel.tblStudentData" Role="tblStudentData" Multiplicity="1" />
+          <End Type="DB_techedModel.tblRefund" Role="tblRefund" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudentData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblRefund">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRefund_tblTrnMode">
+          <End Type="DB_techedModel.tblTrnMode" Role="tblTrnMode" Multiplicity="1" />
+          <End Type="DB_techedModel.tblRefund" Role="tblRefund" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTrnMode">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblRefund">
+              <PropertyRef Name="TrnMode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_tblStudentData">
+          <End Type="DB_techedModel.tblStudentData" Role="tblStudentData" Multiplicity="1" />
+          <End Type="DB_techedModel.tblSale" Role="tblSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudentData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblSale">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSalesReturn_tblStudentData">
+          <End Type="DB_techedModel.tblStudentData" Role="tblStudentData" Multiplicity="1" />
+          <End Type="DB_techedModel.tblSalesReturn" Role="tblSalesReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudentData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblSalesReturn">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTransaction_tblStudentData">
+          <End Type="DB_techedModel.tblStudentData" Role="tblStudentData" Multiplicity="1" />
+          <End Type="DB_techedModel.tblTransaction" Role="tblTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudentData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblTransaction">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTransaction_tblTrnMode">
+          <End Type="DB_techedModel.tblTrnMode" Role="tblTrnMode" Multiplicity="1" />
+          <End Type="DB_techedModel.tblTransaction" Role="tblTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTrnMode">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblTransaction">
+              <PropertyRef Name="TrnMode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_techedModelStoreContainer" CdmEntityContainer="DB_techedEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_techedModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAnnouncements">
+            <EntityTypeMapping TypeName="DB_techedModel.tblAnnouncement">
+              <MappingFragment StoreEntitySet="tblAnnouncement">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClassCategories">
+            <EntityTypeMapping TypeName="DB_techedModel.tblClassCategory">
+              <MappingFragment StoreEntitySet="tblClassCategory">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClassCourses">
+            <EntityTypeMapping TypeName="DB_techedModel.tblClassCourse">
+              <MappingFragment StoreEntitySet="tblClassCourse">
+                <ScalarProperty Name="CourseImage" ColumnName="CourseImage" />
+                <ScalarProperty Name="CourseStatus" ColumnName="CourseStatus" />
+                <ScalarProperty Name="CoursePreviewLink" ColumnName="CoursePreviewLink" />
+                <ScalarProperty Name="CourseFees" ColumnName="CourseFees" />
+                <ScalarProperty Name="CourseDuration" ColumnName="CourseDuration" />
+                <ScalarProperty Name="DetailedDiscription" ColumnName="DetailedDiscription" />
+                <ScalarProperty Name="CourseDiscription" ColumnName="CourseDiscription" />
+                <ScalarProperty Name="EducatorProfile" ColumnName="EducatorProfile" />
+                <ScalarProperty Name="BatchInfo" ColumnName="BatchInfo" />
+                <ScalarProperty Name="CourseCategory" ColumnName="CourseCategory" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCourseVideos">
+            <EntityTypeMapping TypeName="DB_techedModel.tblCourseVideo">
+              <MappingFragment StoreEntitySet="tblCourseVideos">
+                <ScalarProperty Name="VideoLink" ColumnName="VideoLink" />
+                <ScalarProperty Name="VideoTitle" ColumnName="VideoTitle" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEducatorDetails">
+            <EntityTypeMapping TypeName="DB_techedModel.tblEducatorDetail">
+              <MappingFragment StoreEntitySet="tblEducatorDetails">
+                <ScalarProperty Name="EducatorPhoto" ColumnName="EducatorPhoto" />
+                <ScalarProperty Name="EducatorMobile" ColumnName="EducatorMobile" />
+                <ScalarProperty Name="EducatorMailId" ColumnName="EducatorMailId" />
+                <ScalarProperty Name="DetailedProfile" ColumnName="DetailedProfile" />
+                <ScalarProperty Name="EducatorProfile" ColumnName="EducatorProfile" />
+                <ScalarProperty Name="EducatorName" ColumnName="EducatorName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEnquiries">
+            <EntityTypeMapping TypeName="DB_techedModel.tblEnquiry">
+              <MappingFragment StoreEntitySet="tblEnquiry">
+                <ScalarProperty Name="InterestedIn" ColumnName="InterestedIn" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIdPasswords">
+            <EntityTypeMapping TypeName="DB_techedModel.tblIdPassword">
+              <MappingFragment StoreEntitySet="tblIdPassword">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRefunds">
+            <EntityTypeMapping TypeName="DB_techedModel.tblRefund">
+              <MappingFragment StoreEntitySet="tblRefund">
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TrnType" ColumnName="TrnType" />
+                <ScalarProperty Name="TrnMode" ColumnName="TrnMode" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSales">
+            <EntityTypeMapping TypeName="DB_techedModel.tblSale">
+              <MappingFragment StoreEntitySet="tblSales">
+                <ScalarProperty Name="SubscribedCourseId" ColumnName="SubscribedCourseId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSalesReturns">
+            <EntityTypeMapping TypeName="DB_techedModel.tblSalesReturn">
+              <MappingFragment StoreEntitySet="tblSalesReturn">
+                <ScalarProperty Name="Naration" ColumnName="Naration" />
+                <ScalarProperty Name="SubscribedCourseId" ColumnName="SubscribedCourseId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStudentDatas">
+            <EntityTypeMapping TypeName="DB_techedModel.tblStudentData">
+              <MappingFragment StoreEntitySet="tblStudentData">
+                <ScalarProperty Name="StudentStatus" ColumnName="StudentStatus" />
+                <ScalarProperty Name="StudentLoginPassword" ColumnName="StudentLoginPassword" />
+                <ScalarProperty Name="SubscribedCourseId" ColumnName="SubscribedCourseId" />
+                <ScalarProperty Name="StudentCourseUsername" ColumnName="StudentCourseUsername" />
+                <ScalarProperty Name="StudentAddress" ColumnName="StudentAddress" />
+                <ScalarProperty Name="StudentPAN" ColumnName="StudentPAN" />
+                <ScalarProperty Name="StudentDOB" ColumnName="StudentDOB" />
+                <ScalarProperty Name="StudentMailId" ColumnName="StudentMailId" />
+                <ScalarProperty Name="StudentMobileNo" ColumnName="StudentMobileNo" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTransactions">
+            <EntityTypeMapping TypeName="DB_techedModel.tblTransaction">
+              <MappingFragment StoreEntitySet="tblTransaction">
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TrnType" ColumnName="TrnType" />
+                <ScalarProperty Name="TrnMode" ColumnName="TrnMode" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTrnModes">
+            <EntityTypeMapping TypeName="DB_techedModel.tblTrnMode">
+              <MappingFragment StoreEntitySet="tblTrnMode">
+                <ScalarProperty Name="TrnMode" ColumnName="TrnMode" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollectionReceivedViews">
+            <EntityTypeMapping TypeName="DB_techedModel.CollectionReceivedView">
+              <MappingFragment StoreEntitySet="CollectionReceivedView">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentRefundViews">
+            <EntityTypeMapping TypeName="DB_techedModel.PaymentRefundView">
+              <MappingFragment StoreEntitySet="PaymentRefundView">
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesReturnViews">
+            <EntityTypeMapping TypeName="DB_techedModel.SalesReturnView">
+              <MappingFragment StoreEntitySet="SalesReturnView">
+                <ScalarProperty Name="Naration" ColumnName="Naration" />
+                <ScalarProperty Name="CourseFees" ColumnName="CourseFees" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesViews">
+            <EntityTypeMapping TypeName="DB_techedModel.SalesView">
+              <MappingFragment StoreEntitySet="SalesView">
+                <ScalarProperty Name="RunningTotal" ColumnName="RunningTotal" />
+                <ScalarProperty Name="CourseFees" ColumnName="CourseFees" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="TrnDate" ColumnName="TrnDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
