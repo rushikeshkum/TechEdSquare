@@ -8,6 +8,8 @@ namespace Education_Service.Controllers
 {
     public class AdminStudentController : Controller
     {
+        DB_techedEntities db = new DB_techedEntities();
+
         // GET: AdminStudent
         public ActionResult Index()
         {
@@ -15,7 +17,23 @@ namespace Education_Service.Controllers
         }
         public ActionResult AddStudent()
         {
-            return View();
+            List<SelectListItem> ClassCourseList = new List<SelectListItem>();
+            using (var db = new DB_techedEntities())
+            {
+                var objlist = db.tblClassCourses.Select(s => new { s.id, s.CourseName }).ToList();
+                foreach (var item in objlist)
+                {
+                    SelectListItem o = new SelectListItem();
+                    o.Text = item.CourseName;
+                    o.Value = item.id.ToString();
+                    ClassCourseList.Add(o);
+                }
+            }
+
+            ViewBag.Courselist = ClassCourseList;
+            return View("AddStudent");
         }
+
+
     }
 }

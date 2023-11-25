@@ -1,88 +1,153 @@
-﻿
+﻿@model Education_Service.tblStudentData
+
 @{
     ViewBag.Title = "AddStudent";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#btnSave").click(function () {
+            // call ajax
+            var obj =
+            {
 
-<h2>AddStudent</h2>
+                "StudentName": $("#StudentName").val(),
+                "StudentMobileNo": $("#StudentMobileNo").val(),
+                "StudentMailId": $("#StudentMailId").val(),
+                "StudentDOB": $("#StudentDOB").val(),
+                "StudentPAN": $("#StudentPAN").val(),
+                "StudentAddress": $("#StudentAddress").val(),
+                "SubscribedCourseId": $("#SubscribedCourseId").val(),
+                "StudentLoginPassword": $("#StudentLoginPassword").val(),
+                "StudentStatus": $("#StudentStatus").val()
+            };
 
-<div class="col-12 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            @*<h4 class="card-title">Add Student Details</h4>*@
+            $.ajax
+                ({
+                    "url": "/API/SaveStudents",
+                    "method": "post",
+                    "contentType": "application/json",
+                    "data": JSON.stringify(obj),
+                    success: function (data) {
+                        // console.log(data);
 
-            <form class="forms-sample">
-                <div class="form-group">
-                    <label for="exampleInputName1">Student Name</label>
-                    <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter Name">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputName1">Student Mobile No</label>
-                    <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter Mobile No">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail3">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter Email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail3">Date Of Birth</label>
-                    <input type="date" class="form-control" id="birthday" placeholder="Select DOB">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword4">Address</label>
-                    <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Enter Address">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword4">Select Course Name</label>
-                    <select class="form-control form-control-lg" id="exampleFormControlSelect2">
+                        if (data.Code == 0) {
+                            alert(data.Msg);
+                            Loaddata();
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
 
-                        <option>Full Stack Devlopement</option>
-                        <option>UI/UX</option>
-                        <option>MERN stack</option>
-                        <option>Cyber Security</option>
-                        <option>Machine Learning</option>
-                        <option>Cloud Computing</option>
-                    </select>
-                </div>
+        });
+
+    });
+</script>
+
+<h2>Add  Student</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-horizontal ">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-8 ">
                 <div class="form-group">
-                    <label for="exampleSelectGender">Gender</label>
-                    <select class="form-control" id="exampleSelectGender">
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
+                    @Html.LabelFor(model => model.StudentName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StudentName, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.StudentName, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-                @*<div class="form-group">
-            <label>Upload P</label>
-            <input type="file" name="img[]" class="file-upload-default">
-            <div class="input-group col-xs-12">
-                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                <span class="input-group-append">
-                    <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                </span>
             </div>
-        </div>*@
+            <div class="col-8 ">
                 <div class="form-group">
-                    <label for="exampleInputCity1">City</label>
-                    <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
+                    @Html.LabelFor(model => model.StudentMobileNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StudentMobileNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StudentMobileNo, "", new { @class = "text-danger" })
+                    </div>
                 </div>
+            </div>
+            <div class="col-8 ">
                 <div class="form-group">
-                    <label for="exampleInputCity1">Password</label>
-                    <input type="text" class="form-control" id="exampleInputCity1" placeholder="Enter student Password">
+                    @Html.LabelFor(model => model.StudentMailId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StudentMailId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StudentMailId, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-                @*<div class="form-group">
-                    <label for="exampleTextarea1">Textarea</label>
-                    <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                </div>*@
+            </div>
+            <div class="col-8">
                 <div class="form-group">
-                    <label for="exampleSelectGender">Status</label>
-                    <select class="form-control" id="exampleSelectGender">
-                        <option>Active</option>
-                        <option>Deactive</option>
-                    </select>
+                    @Html.LabelFor(model => model.StudentDOB, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StudentDOB, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StudentDOB, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-gradient-primary me-2">Add Student</button>
-                <button class="btn btn-light">Cancel</button>
-            </form>
+            </div>
+            <div class="col-8 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StudentPAN, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StudentPAN, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StudentPAN, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StudentAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StudentAddress, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StudentAddress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SubscribedCourseId, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.SubscribedCourseId, (List<SelectListItem>)ViewBag.Courselist, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SubscribedCourseId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StudentLoginPassword, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StudentLoginPassword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StudentLoginPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 ">
+                <div class="form-group text-black">
+                    @Html.LabelFor(model => model.StudentStatus, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.StudentStatus)
+                            @Html.ValidationMessageFor(model => model.StudentStatus, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" id="btnSave" class="btn btn-success" />
+                </div>
+            </div>
         </div>
     </div>
-   
+}
