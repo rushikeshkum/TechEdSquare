@@ -38,25 +38,35 @@
                         <a href="@Url.Action("Index2", "AdminVideo", new { courseId = item.id })">
                             <h2 class="card-title">@Html.DisplayFor(modelItem => item.CourseName)</h2>
                         </a>
-
+                        @if (item.CourseStatus.ToString() == "True")
+                        {
+                            <span class="badge btn-success">Active</span>
+                        }
+                        else
+                        {
+                            <span class="badge btn-danger">Deactive</span>
+                        }
                         <ul class="list-ticked">
                             <li class="container-fluid">
                                 @Html.DisplayFor(modelItem => item.CourseDiscription)
                             </li>
+
                         </ul>
+
                         <div class="text-right">
-                            <!-- Added text-right class -->
+                            <div class="text-left">
+
+                            </div>
+
                             @Html.ActionLink("Edit", "AddCourse", new { id = item.id }, new { @class = "btn btn-primary" })
                         </div>
+
                     </div>
                 </div>
             </div>
 
+
         }
-
-
-
-
-
-
     </div>
+
+</div>
