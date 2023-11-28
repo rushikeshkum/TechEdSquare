@@ -1,14 +1,58 @@
-﻿
-    @{
-        ViewBag.Title = "AddCourse";
-        Layout = "~/Views/Shared/AdminLayout.cshtml";
-    }
+﻿@model Education_Service.tblClassCourse
+@{
+    ViewBag.Title = "AddCourse";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    //$(document).ready(function () {
+    //    $("#btnSave").click(function () {
+    //        // call ajax
+    //        var obj =
+    //        {
+    //            "Id":$("#Id").val(),
+    //            "CourseName": $("#CourseName").val(),
+    //            "CourseCategory": $("#CourseCategory").val(),
+    //            "BatchInfo": $("#BatchInfo").val(),
+    //            "EducatorProfile": $("#EducatorProfile").val(),
+    //            "CourseDiscription": $("#CourseDiscription").val(),
+    //            "DetailedDiscription": $("#DetailedDiscription").val(),
+    //            "CourseDuration": $("#CourseDuration").val(),
+    //            "CourseFees": $("#CourseFees").val(),
+    //            "CoursePreviewLink": $("#CoursePreviewLink").val(),
+    //            "CourseStatus": $("#CourseStatus").val()
 
-    <h2>AddCourse</h2>
-    <div class="content-wrapper">
+
+    //        };
+
+    //        $.ajax
+    //            ({
+    //                "url": "/API/SaveCourse",
+    //                "method": "post",
+    //                "contentType": "application/json",
+    //                "data": JSON.stringify(obj),
+    //                success: function (data) {
+    //                    // console.log(data);
+
+    //                    if (data.Code == 0) {
+    //                        alert(data.Msg);
+
+    //                    }
+    //                },
+    //                error: function (error) {
+    //                    console.log(error);
+    //                }
+    //            });
+
+    //    });
+
+    //});
+</script>
+<h2>AddCourse</h2>
+<div class="content-wrapper">
 
     <style>
-    
+
         label {
             font-size: 1.2em;
             margin-right: 10px;
@@ -18,99 +62,127 @@
             padding: 8px;
             font-size: 1em;
         }
+
         .form-group {
             padding-right: 80px;
             padding-left: 10px;
         }
-        
     </style>
-        <div class="col-3"></div>
-        <div class="col-9 grid-margin stretch-card">
-            <div class="card "  style="margin-left:80px">
-                <div class="card-body">
-                
+    <div class="col-3"></div>
+    <div class="col-9 grid-margin stretch-card">
+        <div class="card " style="margin-left:80px">
+            <div class="card-body">
 
-                    <form class="forms-sample ">
-                        <div class="form-group ">
-                            <label for="exampleInputName1">Course Title</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleSelectGender">Select Course Category</label>
-                            <select class="form-control" id="exampleSelectGender">
-                                <option>Full Stack Devlopement</option>
-                                <option>UI/UX</option>
-                                <option>MERN stack</option>
-                                <option>Cyber Security</option>
-                                <option>Machine Learning</option>
-                                <option>Cloud Computing</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputName1">Batch Info</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter Mobile No" >
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail3">Educator Profile</label>
-                            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Logged in admins profile automatically fetched here">
-                        </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputPassword4">Course Discription</label>
-                            <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Enter Short Discription">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword4">Course Discription</label>
-                            <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Enter Whole Discription">
-                        </div>
-                        <div>
-                            <divform>
-                            <label for="exampleInputPassword4">Select Course Duration</label><br /><br />
+
+
+                @using (Html.BeginForm())
+                {
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group ">
+
+                        <label for="exampleInputName1">Course Title</label>
+                        @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Course Name" } })
+                        @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CourseCategory, new { @class = "control-label col-md-2" })
+
+                        @Html.DropDownListFor(model => model.CourseCategory, (List<SelectListItem>)ViewBag.CourseCatergories, new { @class = "form-control" })
+                        @*@Html.DropDownListFor(model => model.CourseCategory, (List<SelectListItem>)ViewBag.CourseCatergories, new { @class = "form-control" })*@
+                        @Html.ValidationMessageFor(model => model.CourseCategory, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName1">BatchInfo</label>
+                        @Html.EditorFor(model => model.BatchInfo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter BatchInfo" } })
+                        @Html.ValidationMessageFor(model => model.BatchInfo, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Educator Profile</label>
+                        @Html.EditorFor(model => model.EducatorProfile, new { htmlAttributes = new { @class = "form-control", @placeholder = "Educator Profile" } })
+                        @Html.ValidationMessageFor(model => model.EducatorProfile, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Course Discription</label>
+                        @Html.EditorFor(model => model.CourseDiscription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter CourseDiscription" } })
+                        @Html.ValidationMessageFor(model => model.CourseDiscription, "", new { @class = "text-danger" })
+
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Detailed Course Discription</label>
+                        @Html.EditorFor(model => model.DetailedDiscription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Detailed Discription" } })
+                        @Html.ValidationMessageFor(model => model.DetailedDiscription, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div>
+                        <divform>
                             <div class="form-group">
-                                <label for="hours">Hours:</label>
-                                <input type="number" id="hours" name="hours" min="0" required>
-
-                                <label for="minutes">Minutes:</label>
-                                <input type="number" id="minutes" name="minutes" min="0" max="59" required>
-
-                                <input type="submit" class="btn btn-gradient-info me-1" value="Submit">
-                                </divform>
-                                </div>
+                                @Html.LabelFor(model => model.CourseDuration, "Select Course Duration In Months:")
+                                @Html.TextBoxFor(model => model.CourseDuration, new { type = "number", min = "0", max = "24", required = "required", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CourseDuration, "", new { @class = "text-danger" })
                             </div>
 
-                            @*<div class="form-group">
-                                    <label>Upload P</label>
-                                    <input type="file" name="img[]" class="file-upload-default">
-                                    <div class="input-group col-xs-12">
-                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                        <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                                        </span>
-                                    </div>
-                                </div>*@
-                            <div class="form-group">
-                                <label for="exampleInputCity1">Course Fees</label>
-                                <input type="text" class="form-control" id="exampleInputCity1" placeholder="Fees in ₨ ">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputCity1">Course Preview Link</label>
-                                <input type="text" class="form-control" id="exampleInputCity1" placeholder="Paste Link Below">
-                            </div>
-                            @*<div class="form-group">
-                                    <label for="exampleTextarea1">Textarea</label>
-                                    <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                                </div>*@
-                            <div class="form-group">
-                                <label for="exampleSelectGender">Course Status</label>
-                                <select class="form-control" id="exampleSelectGender">
-                                    <option>Active</option>
-                                    <option>Deactive</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-gradient-primary me-2">Add Student</button>
-                            <button class="btn btn-light">Cancel</button>
-                    </form>
-                </div>
+                        </divform>
+                    </div>
+
+
+                    @*<div class="form-group">
+                    <label>Upload P</label>
+                    <input type="file" name="img[]" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                        </span>
+                    </div>
+                </div>*@
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Course Fees</label>
+                        @Html.EditorFor(model => model.CourseFees, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter CourseFees in ₨ " } })
+                        @Html.ValidationMessageFor(model => model.CourseFees, "", new { @class = "text-danger" })
+
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Course Preview Link</label>
+                        @Html.EditorFor(model => model.CoursePreviewLink, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter CoursePreview Link Here" } })
+                        @Html.ValidationMessageFor(model => model.CoursePreviewLink, "", new { @class = "text-danger" })
+
+                    </div>
+                    @*<div class="form-group">
+                    <label for="exampleTextarea1">Textarea</label>
+                    <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                </div>*@
+                    <div class="form-group">
+
+                        @Html.DropDownListFor(model => model.CourseStatus, (List<SelectListItem>)ViewBag.CourseStatuses, "Select Status", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CourseStatus, "", new { @class = "text-danger" })
+
+
+                        @*@Html.DropDownListFor(model => model.CourseStatus, new SelectList(new[] { "Active", "Deactive" }), "Select Status", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CourseStatus, "", new { @class = "text-danger" })*@
+
+
+                    </div>
+                    <button type="submit" class="btn btn-gradient-primary me-2">Add Course</button>
+                    <button class="btn btn-light">Cancel</button>
+
+
+                }
+
             </div>
+
         </div>
-    </div>
+        </div>
+            </div>
+        

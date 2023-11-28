@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "profile";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <!-- Page title -->
+            <div class="my-5">
+                <h3>My Profile</h3>
+                <hr>
+            </div>
+            <!-- Form START -->
+            <form class="file-upload">
+                <div class="row g-3">
+                    <!-- Contact detail -->
+                    <div class="col-md-6">
+                        <!-- First Name -->
+                        <label class="form-label">First Name *</label>
+                        <input type="text" class="form-control" placeholder="" aria-label="First name" value="Scaralet">
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Last Name -->
+                        <label class="form-label">Last Name *</label>
+                        <input type="text" class="form-control" placeholder="" aria-label="Last name" value="Doe">
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Phone number -->
+                        <label class="form-label">Phone number *</label>
+                        <input type="text" class="form-control" placeholder="" aria-label="Phone number" value="(333) 000 555">
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Mobile number -->
+                        <label class="form-label">Mobile number *</label>
+                        <input type="text" class="form-control" placeholder="" aria-label="Phone number" value="+91 9852 8855 252">
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Email -->
+                        <label for="inputEmail4" class="form-label">Email *</label>
+                        <input type="email" class="form-control" id="inputEmail4" value="example@homerealty.com">
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Skype -->
+                        <label class="form-label">Skype *</label>
+                        <input type="text" class="form-control" placeholder="" aria-label="Phone number" value="Scaralet D">
+                    </div>
+
+                    <!-- Upload profile -->
+                    <div class="col-md-6">
+                        <!-- Profile Photo -->
+                        <div class="bg-secondary-soft px-4 py-5 rounded">
+                            <h4 class="mb-4 mt-0">Upload your profile photo</h4>
+                            <div class="text-center">
+                                <!-- Image upload -->
+                                <div class="square position-relative display-2 mb-3">
+                                    <i class="fas fa-fw fa-user position-absolute top-50 start-50 translate-middle text-secondary"></i>
+                                </div>
+                                <!-- Button -->
+                                <input type="file" id="customFile" name="file" hidden="">
+                                <label class="btn btn-success-soft btn-block" for="customFile">Upload</label>
+                                <button type="button" class="btn btn-danger-soft">Remove</button>
+                                <!-- Content -->
+                                <p class="text-muted mt-3 mb-0"><span class="me-1">Note:</span>Minimum size 300px x 300px</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form> <!-- Form END -->
+        </div>
+    </div>
+</div>
+

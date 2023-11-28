@@ -1,4 +1,4 @@
-﻿
+﻿@model Education_Service.tblCourseVideo
 @{
     ViewBag.Title = "AddVideo";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -12,31 +12,37 @@
     <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body border-1">
-                <h4 class="card-title text-center">Add New Video</h4>
-                <p class="card-description text-center"> Basic form layout </p>
-                <form class="forms-sample">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <h4 class="card-title text-center">Add New Video</h4>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @*<div class="form-group">
+                        <label for="exampleInputUsername1">courceid</label>
+                        @Html.EditorFor(model => model.CourseId, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+                    </div>*@
                     <div class="form-group">
                         <label for="exampleInputUsername1">Video Name</label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Enter video title">
+                        @Html.EditorFor(model => model.VideoTitle, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter video title" } })
+                        @Html.ValidationMessageFor(model => model.VideoTitle, "", new { @class = "text-danger" })
+                        
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Video Link</label>
-                        <input type="email" class="form-control" id="" placeholder="Enter Full Video Link">
+                        @Html.EditorFor(model => model.VideoLink, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Full Video Link" } })
+                        @Html.ValidationMessageFor(model => model.VideoLink, "", new { @class = "text-danger" })
+
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Short Description</label>
-                        <input type="password" class="form-control" id="" placeholder=" Enter short description">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputConfirmPassword1">Duration of video</label>
-                        <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Enter duration of video">
-                    </div>
-                   
-                    <button type="submit" class="btn btn-gradient-primary me-2">Save</button>
+                    <button type = "submit" class="btn btn-gradient-primary me-2">Save</button>
                     <button class="btn btn-light">Cancel</button>
-                </form>
+
+
+                }
             </div>
         </div>
+        <div class="col-3"></div>
     </div>
-    <div class="col-3"></div>
 </div>

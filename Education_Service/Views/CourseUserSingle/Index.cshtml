@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Education_Service.tblClassCourse>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -21,6 +21,7 @@
 
 <!--====== SEARCH BOX PART ENDS ======-->
 <!--====== PAGE BANNER PART START ======-->
+
 
 <section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url(/images/page-banner-2.jpg)">
     <div class="container">
@@ -50,7 +51,7 @@
             <div class="col-lg-8">
                 <div class="corses-singel-left mt-30">
                     <div class="title">
-                        <h3>Learn basis javascirpt from start for beginner</h3>
+                        <h3>@ViewBag.CourseName</h3>
                     </div> <!-- title -->
                     <div class="course-terms">
                         <ul>
@@ -60,15 +61,15 @@
                                         <img src="/images/course/teacher/t-1.jpg" alt="Teacher">
                                     </div>
                                     <div class="name">
-                                        <span>Teacher</span>
-                                        <h6>Mark anthem</h6>
+                                        <span>Duration</span>
+                                        <h6>@ViewBag.CourseDuration</h6>
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div class="course-category">
                                     <span>Category</span>
-                                    <h6>Programaming </h6>
+                                    <h6>@ViewBag.CourseCategory </h6>
                                 </div>
                             </li>
                             <li>
@@ -112,11 +113,11 @@
                                 <div class="overview-description">
                                     <div class="singel-description pt-40">
                                         <h6>Course Summery</h6>
-                                        <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus .</p>
+                                        <p>@ViewBag.CourseShortD</p>
                                     </div>
                                     <div class="singel-description pt-40">
                                         <h6>Requrements</h6>
-                                        <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus .</p>
+                                        <p>@ViewBag.CourseDetaildD</p>
                                     </div>
                                 </div> <!-- overview description -->
                             </div>
@@ -419,13 +420,13 @@
                         <div class="course-features mt-30">
                             <h4>Course Features </h4>
                             <ul>
-                                <li><i class="fa fa-clock-o"></i>Duaration : <span>10 Hours</span></li>
+                                <li><i class="fa fa-clock-o"></i>Duaration : <span>@ViewBag.CourseDuration</span></li>
                                 <li><i class="fa fa-clone"></i>Leactures : <span>09</span></li>
                                 <li><i class="fa fa-beer"></i>Quizzes :  <span>05</span></li>
                                 <li><i class="fa fa-user-o"></i>Students :  <span>100</span></li>
                             </ul>
                             <div class="price-button pt-10">
-                                <span>Price : <b>$25</b></span>
+                                <span>Price : <b>@ViewBag.CourseFees/-</b></span>
                                 <a href="#" class="main-btn">Enroll Now</a>
                             </div>
                         </div> <!-- course features -->
