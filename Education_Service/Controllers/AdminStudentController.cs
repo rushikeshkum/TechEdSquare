@@ -11,7 +11,7 @@ namespace Education_Service.Controllers
         DB_techedEntities db = new DB_techedEntities();
 
         // GET: AdminStudent
-        public ActionResult Index()
+        public ActionResult AllStudent()
         {
             return View();
         }

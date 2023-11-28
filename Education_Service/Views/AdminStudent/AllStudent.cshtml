@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "AllStudent";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        Loaddata();
+
+    });
+
+    function Loaddata() {
+        $.ajax
+            ({
+                "url": "/API/GetAllStudents",
+                "method": "GET",
+                success: function (resp) {
+                    /*console.log(resp);*/
+                    if (resp.Code == 0) {
+                        $("#studenttable").empty();
+
+                        $.each(resp.Message, function (AllStudent, item) {
+                            console.log(resp.Message)
+                            $("#studenttable").append("<tr><td><button class='btn btn-danger' onclick='btnDelete(" + item.Id + ")'>Delete</button><button class='btn btn-info' onclick='btnEdit(" + item.Id + ")'>Edit</button></td><td>" + item.id + "</td><td>" + item.StudentName + "</td><td>" + item.StudentMobileNo + "</td><td>" + item.StudentMailId + "</td><td>" + item.Course + "</td><td>" + item.createdBy + "</td></tr >")
+                        })
+                    }
+                },
+                error: function (resp) {
+                    console.log(resp);
+                }
+            })
+    }
+  
+</script>
+
+
+<h2>All Student Information</h2>
+<div class="row">
+
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+
+                <p class="card-description">
+                </p>
+                <h1>All Student Information</h1>
+               
+                <table id="table1" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Operation</th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Mobile Number</th>
+                            <th>Email</th>
+                            <th>Course Name</th>
+                            <th>Fee</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studenttable">
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

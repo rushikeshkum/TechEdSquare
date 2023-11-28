@@ -15,9 +15,11 @@ namespace Education_Service.Controllers
         public ActionResult GetAllStudents()
         {
             var objlist = db.tblStudentDatas.
-                Select(s => new { s.id, s.StudentName, s.StudentMobileNo, s.StudentMailId, s.StudentDOB, s.StudentPAN, s.StudentAddress, s.SubscribedCourseId, s.StudentLoginPassword, s.StudentStatus }).
+                Select(s => new { s.id, s.StudentName, s.StudentMobileNo, s.StudentMailId, s.StudentDOB, s.StudentPAN, s.StudentAddress, Course=s.tblClassCourse.CourseName, s.StudentLoginPassword, s.StudentStatus }).
                 ToList();
-            return Json(objlist, JsonRequestBehavior.AllowGet);
+            rep.Code = 0;
+            rep.Message = objlist;
+            return Json(rep, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -41,5 +43,6 @@ namespace Education_Service.Controllers
             }
 
         }
+        
     }
 }
