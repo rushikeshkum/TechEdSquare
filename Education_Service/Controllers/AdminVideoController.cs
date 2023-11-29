@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Education_Service.Controllers
 {
+    [Authorize]
     public class AdminVideoController : Controller
     {
         DB_techedEntities db = new DB_techedEntities();

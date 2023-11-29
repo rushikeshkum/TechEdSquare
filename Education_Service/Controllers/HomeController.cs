@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Education_Service.Controllers
 {
+    
     public class HomeController : Controller
     {
         // GET: Home
