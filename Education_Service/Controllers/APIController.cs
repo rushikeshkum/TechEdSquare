@@ -42,108 +42,13 @@ namespace Education_Service.Controllers
 
         }
 
-        //API COURSES
-        public ActionResult GetAllCourses()
+        public JsonResult GetAllData()
         {
-            var objlist = db.tblClassCourses.
-                Select(c => new { c.id, c.CourseName, c.CourseCategory, c.BatchInfo, c.EducatorProfile, c.CourseDiscription, c.DetailedDiscription, c.CourseDuration, c.CourseFees, c.CoursePreviewLink,c.CourseStatus,c.CourseImage}).
-                ToList();
-            return Json(objlist, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        //public JsonResult SaveCourses(tblClassCourse c)
-        //{
-        //    try
-        //    {
-        //        db.tblClassCourses.Add(c);
-        //        db.SaveChanges();
-        //        rep.Code = 0;
-        //        rep.Message = "Course Inserted";
-        //        return Json(rep, JsonRequestBehavior.AllowGet);
-        //    }
-        //    catch (Exception er)
-        //    {
-        //        rep.Code = -1;
-        //        rep.Message = er.Message;
-        //        return Json(er.Message, JsonRequestBehavior.AllowGet);
-
-        //    }
-        //}
-        public JsonResult SaveCourse(tblClassCourse c)//passing material from outside 122
-        {
-            ResponseModel rep = new ResponseModel();
-
-
-            if (ModelState.IsValid == false)
-            {
-                return Json(CommonRepo.GetAdditionalValidationIssues(ModelState), JsonRequestBehavior.AllowGet);
-            }
-            try
-            {
-                var oldclass = db.tblClassCourses.Find(c.id);
-                if (oldclass != null)
-                {
-                    oldclass.CourseName = c.CourseName;
-                    oldclass.CourseCategory = c.CourseCategory;
-                    oldclass.BatchInfo = c.BatchInfo;
-                    oldclass.EducatorProfile = c.EducatorProfile;
-                    oldclass.CourseDiscription = c.CourseDiscription;
-                    oldclass.DetailedDiscription = c.DetailedDiscription;
-                    oldclass.CourseDuration = c.CourseDuration;
-                    oldclass.CourseFees = c.CourseFees;
-                    oldclass.CoursePreviewLink = c.CoursePreviewLink; 
-                    oldclass.CourseStatus = c.CourseStatus;
-                    oldclass.CourseImage = c.CourseImage;
-
-
-                    db.tblClassCourses.Attach(oldclass);
-                    db.Entry(oldclass).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-
-                    rep.Code = 0;
-                    rep.Message = "Succesfully Course updated";
-                }
-                else
-                {
-                    db.tblClassCourses.Add(c);
-                    db.SaveChanges();
-                    rep.Message = "Succesfully Inserted";
-                   
-                }
-
-
-                return Json(rep, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception er)
-            {
-                rep.Code = -1;
-                rep.Message = er.Message;
-                return Json(er.Message, JsonRequestBehavior.AllowGet);
-            }
-        }
-        public JsonResult DeleteCourseById(int id)
-        {
-           
-
-            if (id == 0)
-            {
-                rep.Code = -1;
-                rep.Message = "Id must be greater than 1";
-
-                return Json(rep, JsonRequestBehavior.AllowGet);
-            }
-            var obj = db.tblClassCourses.Find(id);
-            if (obj != null)
-            {
-                db.tblClassCourses.Remove(obj);
-                db.SaveChanges();
-
-                rep.Code = 0;
-                rep.Message = "Course Deleted Succesfully";
-            }
+            var objlist = db.tblEnquiries.
+                Select(s => new { s.id, s.Name, s.EmailId, s.MobileNo, s.InterestedIn }).ToList();
+               rep.Code = 0;
+               rep.Message = objlist;
             return Json(rep, JsonRequestBehavior.AllowGet);
-
         }
     }
 }
