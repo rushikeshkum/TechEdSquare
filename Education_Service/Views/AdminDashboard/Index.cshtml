@@ -1,8 +1,9 @@
-﻿
+﻿@model Education_Service.tblEnquiry
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <style>
     table {
         border-collapse: collapse;
@@ -20,6 +21,41 @@
         background-color: #f2f2f2;
     }
 </style>
+
+<script>
+    $(document).ready(function () {
+    
+        LoadData();    
+
+    });
+
+    function LoadData() {
+        $.ajax
+            ({
+                "url": "/API/GetAllData",
+                "method": "GET",
+                success: function (resp) {
+                    console.log(resp);
+                    if (resp.Code == 0) {
+                        $('#EnquiryTable').empty();
+
+                        $.each(resp.Message, function (index, item) {
+                            console.log(resp.Message)
+                            $('#EnquiryTable').append("<tr><td>" + item.id + "</td><td>" + item.Name + "</td><td>" + item.EmailId + "</td><td>" + item.MobileNo + "</td><td>" + item.InterestedIn + "</td><td><button onclick='Add(" + item.id + ")'>Add</button></td></tr>");
+                        })
+                    }
+                },
+                error: function (resp) {
+                    console.log(resp)
+                }
+            })
+    }
+
+
+
+</script>
+
+
 
 <div class="content-wrapper">
     <div class="page-header">
@@ -74,16 +110,25 @@
     </div>
     <div>
         <h1 class="page-title ">Equired data</h1>
-        <table id="categoryTable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th> Name</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Categories will be added dynamically here -->
-            </tbody>
-        </table>
+        <div class="container">
+            <div class="col-12">
+                <button class="btn btn-danger" id="btnRefresh">Refresh</button>
+                
+            </div>
+            <table id="categoryTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>EmailId</th>
+                        <th>MobileNo</th>
+                        <th>InterestedIn</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="EnquiryTable">
+                </tbody>
+            </table>
+        </div>
     </div>
+</div>

@@ -41,5 +41,14 @@ namespace Education_Service.Controllers
             }
 
         }
+
+        public JsonResult GetAllData()
+        {
+            var objlist = db.tblEnquiries.
+                Select(s => new { s.id, s.Name, s.EmailId, s.MobileNo, s.InterestedIn }).ToList();
+               rep.Code = 0;
+               rep.Message = objlist;
+            return Json(rep, JsonRequestBehavior.AllowGet);
+        }
     }
 }
