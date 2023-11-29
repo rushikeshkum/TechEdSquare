@@ -1,145 +1,56 @@
-﻿
+﻿@model IEnumerable<Education_Service.tblCourseVideo>
 @{
     ViewBag.Title = "AllVideo";
     Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+@functions {
+    public static string ToHtmlId(string input)
+    {
+        // Replace spaces and special characters with underscores
+        return input.Replace(" ", "_").Replace("#", "").Replace("(", "").Replace(")", "");
+    }
 }
 
 <div class="container">
     <div class="curriculum-cont">
         <div class="curriculam-cont">
             <div class="title">
-                <h6>Learn basis javascirpt Lecture Started</h6>
+                <h6>@ViewBag.Cname</h6>
             </div>
             <div class="accordion" id="accordionExample">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <ul>
-                                <li><i class="fa fa-file-o"></i></li>
-                                <li><span class="lecture">Lecture 1.1</span></li>
-                                <li><span class="head">What is javascirpt</span></li>
-                                <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> 00.30.00</span></span></li>
-                            </ul>
-                        </a>
-                    </div>
+                @foreach (var item in (List<tblCourseVideo>)ViewBag.Videos)
+                {
+                    <div class="card">
+                        <div class="card-header" id="heading@ToHtmlId(item.VideoTitle)">
+                            <a href="#" data-toggle="collapse" data-target="#@ToHtmlId(item.VideoTitle)" aria-expanded="false" aria-controls="@ToHtmlId(item.VideoTitle)">
+                                <ul>
+                                    <li><i class="fa fa-file-o"></i></li>
+                                    <li><span class="lecture">Lecture</span></li>
+                                    <li><span class="head">@Html.DisplayFor(modelItem => item.VideoTitle)</span></li>
+                                    <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> 00.30.00</span></span></li>
+                                </ul>
+                            </a>
+                        </div>
 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Ut quis scelerisque risus, et viverra nisi. Phasellus ultricies luctus augue, eget maximus felis laoreet quis. Maecenasbibendum tempor eros.</p>
+                        <div id="@ToHtmlId(item.VideoTitle)" class="collapse" aria-labelledby="heading @ToHtmlId(item.VideoTitle)" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p><a href="@item.VideoLink" target="_blank">@Html.DisplayFor(modelItem => item.VideoLink)</a></p>
+                                
+                            </div>
+                            @*<div class="card-body">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="@item.VideoLink" allowfullscreen></iframe>
+                                </div>*@
+
                         </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingTow">
-                        <a href="#" data-toggle="collapse" class="collapsed" data-target="#collapseTow" aria-expanded="true" aria-controls="collapseTow">
-                            <ul>
-                                <li><i class="fa fa-file-o"></i></li>
-                                <li><span class="lecture">Lecture 1.2</span></li>
-                                <li><span class="head">What is javascirpt</span></li>
-                                <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> 00.30.00</span></span></li>
-                            </ul>
-                        </a>
-                    </div>
-
-                    <div id="collapseTow" class="collapse" aria-labelledby="headingTow" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Ut quis scelerisque risus, et viverra nisi. Phasellus ultricies luctus augue, eget maximus felis laoreet quis. Maecenasbibendum tempor eros.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <a href="#" data-toggle="collapse" class="collapsed" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <ul>
-                                <li><i class="fa fa-file-o"></i></li>
-                                <li><span class="lecture">Lecture 1.3</span></li>
-                                <li><span class="head">What is javascirpt</span></li>
-                                <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> 00.30.00</span></span></li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Ut quis scelerisque risus, et viverra nisi. Phasellus ultricies luctus augue, eget maximus felis laoreet quis. Maecenasbibendum tempor eros.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header" id="headingFore">
-                        <a href="#" data-toggle="collapse" class="collapsed" data-target="#collapseFore" aria-expanded="false" aria-controls="collapseFore">
-                            <ul>
-                                <li><i class="fa fa-file-o"></i></li>
-                                <li><span class="lecture">Lecture 1.4</span></li>
-                                <li><span class="head">What is javascirpt</span></li>
-                                <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> 00.30.00</span></span></li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div id="collapseFore" class="collapse" aria-labelledby="headingFore" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Ut quis scelerisque risus, et viverra nisi. Phasellus ultricies luctus augue, eget maximus felis laoreet quis. Maecenasbibendum tempor eros.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header" id="headingFive">
-                        <a href="#" data-toggle="collapse" class="collapsed" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                            <ul>
-                                <li><i class="fa fa-file-o"></i></li>
-                                <li><span class="lecture">Lecture 1.5</span></li>
-                                <li><span class="head">What is javascirpt</span></li>
-                                <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> 00.30.00</span></span></li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Ut quis scelerisque risus, et viverra nisi. Phasellus ultricies luctus augue, eget maximus felis laoreet quis. Maecenasbibendum tempor eros.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header" id="headingSix">
-                        <a href="#" data-toggle="collapse" class="collapsed" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                            <ul>
-                                <li><i class="fa fa-file-o"></i></li>
-                                <li><span class="lecture">Lecture 1.6</span></li>
-                                <li><span class="head">What is javascirpt</span></li>
-                                <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> 00.30.00</span></span></li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Ut quis scelerisque risus, et viverra nisi. Phasellus ultricies luctus augue, eget maximus felis laoreet quis. Maecenasbibendum tempor eros.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header" id="headingSeven">
-                        <a href="#" data-toggle="collapse" class="collapsed" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                            <ul>
-                                <li><i class="fa fa-file-o"></i></li>
-                                <li><span class="lecture">Lecture 1.7</span></li>
-                                <li><span class="head">What is javascirpt</span></li>
-                                <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> 00.30.00</span></span></li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Ut quis scelerisque risus, et viverra nisi. Phasellus ultricies luctus augue, eget maximus felis laoreet quis. Maecenasbibendum tempor eros.</p>
-                        </div>
-                    </div>
-                </div>
+                }
+               
             </div>
+               
         </div>
     </div>
 </div>
 
+    </div>
