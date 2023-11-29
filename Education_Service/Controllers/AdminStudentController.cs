@@ -34,6 +34,6 @@ namespace Education_Service.Controllers
             return View("AddStudent");
         }
 
-
+        
     }
 }

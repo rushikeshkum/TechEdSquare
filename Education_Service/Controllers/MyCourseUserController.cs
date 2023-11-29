@@ -6,13 +6,14 @@ using System.Web.Mvc;
 
 namespace Education_Service.Controllers
 {
-    
-    public class HomeController : Controller
+    public class MyCourseUserController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+        // GET: MyCourseUser
+        public ActionResult MyCourse()
         {
             return View();
         }
+
+        
     }
 }

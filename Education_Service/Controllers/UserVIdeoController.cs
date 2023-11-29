@@ -6,11 +6,10 @@ using System.Web.Mvc;
 
 namespace Education_Service.Controllers
 {
-    
-    public class HomeController : Controller
+    public class UserVIdeoController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+        // GET: UserVIdeo
+        public ActionResult AllVideo()
         {
             return View();
         }
