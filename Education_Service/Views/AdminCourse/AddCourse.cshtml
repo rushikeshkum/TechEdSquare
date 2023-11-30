@@ -76,7 +76,7 @@
 
 
 
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("AddCourse", "AdminCourse", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
 
                     @Html.AntiForgeryToken()
@@ -137,15 +137,15 @@
 
 
                     @*<div class="form-group">
-                    <label>Upload P</label>
-                    <input type="file" name="img[]" class="file-upload-default">
-                    <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                        <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                        </span>
-                    </div>
-                </div>*@
+                <label>Upload P</label>
+                <input type="file" name="img[]" class="file-upload-default">
+                <div class="input-group col-xs-12">
+                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                    <span class="input-group-append">
+                        <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                    </span>
+                </div>
+            </div>*@
                     <div class="form-group">
                         <label for="exampleInputCity1">Course Fees</label>
                         @Html.EditorFor(model => model.CourseFees, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter CourseFees in ₨ " } })
@@ -160,9 +160,9 @@
 
                     </div>
                     @*<div class="form-group">
-                    <label for="exampleTextarea1">Textarea</label>
-                    <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                </div>*@
+                <label for="exampleTextarea1">Textarea</label>
+                <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+            </div>*@
                     <div class="form-group">
 
                         @Html.DropDownListFor(model => model.CourseStatus, (List<SelectListItem>)ViewBag.CourseStatuses, "Select Status", new { @class = "form-control" })
@@ -170,9 +170,15 @@
 
 
                         @*@Html.DropDownListFor(model => model.CourseStatus, new SelectList(new[] { "Active", "Deactive" }), "Select Status", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.CourseStatus, "", new { @class = "text-danger" })*@
+                @Html.ValidationMessageFor(model => model.CourseStatus, "", new { @class = "text-danger" })*@
 
 
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Upload Image</label>
+                        
+                        <input type="file" id="CourseImage" name="CourseImage" class="form-control" />  
                     </div>
                     <button type="submit" class="btn btn-gradient-primary me-2">Add Course</button>
                     <button class="btn btn-light">Cancel</button>

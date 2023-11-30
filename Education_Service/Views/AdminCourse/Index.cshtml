@@ -32,7 +32,15 @@
             <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <img src="https://images2.alphacoders.com/133/1336516.png" class="w-100 h-5">
+                        <td>
+                            @if (item.CourseImage != null)
+                            {
+                                <img src="~/UploadedCourseImg/@item.CourseImage" width="380px" />
+                                
+
+                            }
+
+                        </td>
                         <br />
                         <br />
                         <a href="@Url.Action("Index", "AdminVideo", new { courseId = item.id })">
