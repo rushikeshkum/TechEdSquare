@@ -41,7 +41,7 @@ namespace Education_Service.Controllers
 
             }
 
-            return View(tupleModel);
+            return View();
         }
         [HttpPost]
         public ActionResult Index(tblEnquiry enq)

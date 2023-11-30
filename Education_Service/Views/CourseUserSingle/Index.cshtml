@@ -430,7 +430,7 @@
                             </ul>
                             <div class="price-button pt-10">
                                 <span>Price : <b>@ViewBag.CourseFees/-</b></span>
-                                <a href="@Url.Action("index", "contact", new {id=@ViewBag.id})" class="main-btn">Enroll Now</a>
+                                <a href="@Url.Action("index", "contact")" class="main-btn">Enroll Now</a>
                             </div>
                         </div> <!-- course features -->
                     </div>
@@ -498,7 +498,7 @@
                                         }
                                     </div>
                                     <div class="price">
-                                        <span>Free</span>
+                                        <span> @Html.DisplayFor(modelItem => item.CourseFees)/-</span>
                                     </div>
                                 </div>
                                 <div class="cont">
