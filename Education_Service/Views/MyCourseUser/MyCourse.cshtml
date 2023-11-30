@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Education_Service.tblClassCourse>
+@{
+    ViewBag.Title = "MyCourse";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<style></style>
+
+
+<div class="row pt-3 pb-3">
+    @{
+        if (ViewBag.course != null)
+        {
+            foreach (var item in (List<tblClassCourse>)ViewBag.course)
+            {
+                <div class="card mx-auto text-center" style="width: 18rem;">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="@Url.Action("AllVideo", "Uservideo", new { id = item.id })">@Html.DisplayFor(modelItem => item.CourseName)</a></h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.CourseDiscription)</p>
+                        <a href="@Url.Action("AllVideo", "Uservideo", new { id = item.id })" class="btn btn-primary">All videos</a>
+                    </div>
+                </div>
+
+            }
+        }
+        else
+        {
+            
+                <div class="card mx-auto text-center mt-125 mb-125 " style="width: 50rem;">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Kindly contact your teacher........!</h5>
+                    </div>
+                </div>
+           
+
+        }
+    }
+</div>
+

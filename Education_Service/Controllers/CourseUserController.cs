@@ -8,10 +8,18 @@ namespace Education_Service.Controllers
 {
     public class CourseUserController : Controller
     {
-        // GET: CourseUser
+       DB_techedEntities db=new DB_techedEntities();
         public ActionResult Index()
         {
+            var obj = db.tblClassCourses.Where(c => c.CourseStatus == true).ToList();
+            if (obj != null)
+            {
+                ViewBag.Allcourse = obj;
+
+            }
             return View();
         }
+
+       
     }
 }

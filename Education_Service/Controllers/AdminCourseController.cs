@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Education_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Mapping;
 using System.IO;
@@ -9,6 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace Education_Service.Controllers
 {
+    [CustomAuthorizeRoles("Admin")]
     public class AdminCourseController : Controller
     {
         DB_techedEntities db = new DB_techedEntities();

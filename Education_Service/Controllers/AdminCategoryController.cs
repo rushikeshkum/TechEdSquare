@@ -7,6 +7,8 @@ using System.Web.Mvc;
 
 namespace Education_Service.Controllers
 {
+    
+    [CustomAuthorizeRoles("Admin")]
     public class AdminCategoryController : Controller
     {
         DB_techedEntities db = new DB_techedEntities();

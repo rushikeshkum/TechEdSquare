@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Education_Service.tblCourseVideo>
+@{
+    ViewBag.Title = "AllVideo";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+@functions {
+    public static string ToHtmlId(string input)
+    {
+        // Replace spaces and special characters with underscores
+        return input.Replace(" ", "_").Replace("#", "").Replace("(", "").Replace(")", "");
+    }
+}
+
+<div class="container">
+    <div class="curriculum-cont">
+        <div class="curriculam-cont">
+            <div class="title">
+                <h6>@ViewBag.Cname</h6>
+            </div>
+            <div class="accordion" id="accordionExample">
+                @foreach (var item in (List<tblCourseVideo>)ViewBag.Videos)
+                {
+                    <div class="card">
+                        <div class="card-header" id="heading@ToHtmlId(item.VideoTitle)">
+                            <a href="#" data-toggle="collapse" data-target="#@ToHtmlId(item.VideoTitle)" aria-expanded="false" aria-controls="@ToHtmlId(item.VideoTitle)">
+                                <ul>
+                                    <li><i class="fa fa-file-o"></i></li>
+                                    <li><span class="lecture">Lecture</span></li>
+                                    <li><span class="head">@Html.DisplayFor(modelItem => item.VideoTitle)</span></li>
+                                    <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <span> 00.30.00</span></span></li>
+                                </ul>
+                            </a>
+                        </div>
+
+                        <div id="@ToHtmlId(item.VideoTitle)" class="collapse" aria-labelledby="heading @ToHtmlId(item.VideoTitle)" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p><a href="@item.VideoLink" target="_blank">@Html.DisplayFor(modelItem => item.VideoLink)</a></p>
+                                
+                            </div>
+                            @*<div class="card-body">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="@item.VideoLink" allowfullscreen></iframe>
+                                </div>*@
+                        </div>
+                    </div>
+
+                }
+               
+            </div>
+               
+        </div>
+    </div>
+</div>
+
+    </div>

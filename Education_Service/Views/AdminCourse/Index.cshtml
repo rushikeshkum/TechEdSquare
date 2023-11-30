@@ -21,7 +21,7 @@
 
     </div>
 
-
+</div>
 
     <br />
     <div class="row">
@@ -31,7 +31,13 @@
         {
             <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
+
                     <div class="card-body">
+                        <a href="@Url.Action("Index", "AdminVideo", new { courseId = item.id })">
+                            <img src="https://images2.alphacoders.com/133/1336516.png" class="w-100 h-5">
+                            <br />
+                            <br />
+
                         <td>
                             @if (item.CourseImage != null)
                             {
@@ -45,22 +51,22 @@
                         <br />
                         <a href="@Url.Action("Index", "AdminVideo", new { courseId = item.id })">
                             <h2 class="card-title">@Html.DisplayFor(modelItem => item.CourseName)</h2>
+
+                            @if (item.CourseStatus.ToString() == "True")
+                            {
+                                <span class="badge btn-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge btn-danger">Deactive</span>
+                            }
+                            <ul class="list-ticked">
+                                <li class="container-fluid">
+                                    @Html.DisplayFor(modelItem => item.CourseDiscription)
+                                </li>
+
+                            </ul>
                         </a>
-                        @if (item.CourseStatus.ToString() == "True")
-                        {
-                            <span class="badge btn-success">Active</span>
-                        }
-                        else
-                        {
-                            <span class="badge btn-danger">Deactive</span>
-                        }
-                        <ul class="list-ticked">
-                            <li class="container-fluid">
-                                @Html.DisplayFor(modelItem => item.CourseDiscription)
-                            </li>
-
-                        </ul>
-
                         <div class="text-right">
                             <div class="text-left">
 

@@ -6,11 +6,10 @@ using System.Web.Mvc;
 
 namespace Education_Service.Controllers
 {
-    
-    public class HomeController : Controller
+    public class UnauthorizeAccesController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+        // GET: UnauthorizeAcces
+        public ActionResult AccesDenied()
         {
             return View();
         }
