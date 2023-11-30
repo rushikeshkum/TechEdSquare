@@ -26,6 +26,7 @@ namespace Education_Service.Controllers
 
             try
             {
+                s.Roles = "Student";
                 db.tblStudentDatas.Add(s);
                 db.SaveChanges();
                 rep.Code = 0;
