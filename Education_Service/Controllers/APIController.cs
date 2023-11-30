@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace Education_Service.Controllers
 {
@@ -42,8 +44,55 @@ namespace Education_Service.Controllers
 
             }
 
+
         }
 
+        public JsonResult DeleteStudent(int id)
+        {
+            try
+            {
+                var list = db.tblStudentDatas.Find(id);
+                if (list!=null)
+                {
+                    db.tblStudentDatas.Remove(list);
+                    db.SaveChanges();
+                    rep.Code = 0;
+                    rep.Message = "Deleted";
+                    
+                }
+            }
+            catch (Exception er)
+            {
+                rep.Code = -1;
+                rep.Message = er.Message;
+                
+            }
+            return Json(rep, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult FindStudentById(int id)
+        {
+            try
+            {
+                var objlist = db.tblStudentDatas.
+                  Select(s => new { s.id, s.StudentName, s.StudentMobileNo, s.StudentMailId, s.StudentDOB, 
+                      s.StudentPAN, s.StudentAddress,Course = s.tblClassCourse.CourseName, s.StudentLoginPassword,
+                      s.StudentStatus }).Where(w=>w.id==id).FirstOrDefault();
+
+                rep.Code = 0;
+                rep.Message = objlist;
+               
+            }
+            catch (Exception er)
+            {
+                rep.Code = -1;
+                rep.Message = er.Message;
+
+            }
+            return Json(rep, JsonRequestBehavior.AllowGet);
+        }
+
+       
         //API COURSES
         public ActionResult GetAllCourses()
         {
@@ -53,25 +102,7 @@ namespace Education_Service.Controllers
             return Json(objlist, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-        //public JsonResult SaveCourses(tblClassCourse c)
-        //{
-        //    try
-        //    {
-        //        db.tblClassCourses.Add(c);
-        //        db.SaveChanges();
-        //        rep.Code = 0;
-        //        rep.Message = "Course Inserted";
-        //        return Json(rep, JsonRequestBehavior.AllowGet);
-        //    }
-        //    catch (Exception er)
-        //    {
-        //        rep.Code = -1;
-        //        rep.Message = er.Message;
-        //        return Json(er.Message, JsonRequestBehavior.AllowGet);
-
-        //    }
-        //}
+       
         public JsonResult SaveCourse(tblClassCourse c)//passing material from outside 122
         {
             ResponseModel rep = new ResponseModel();

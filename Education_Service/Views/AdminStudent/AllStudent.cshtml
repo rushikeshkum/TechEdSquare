@@ -6,7 +6,10 @@
 
 <script>
     $(document).ready(function () {
+
+        $("#table1").DataTable();
         Loaddata();
+
 
     });
 
@@ -22,7 +25,7 @@
 
                         $.each(resp.Message, function (AllStudent, item) {
                             console.log(resp.Message)
-                            $("#studenttable").append("<tr><td><button class='btn btn-danger' onclick='btnDelete(" + item.Id + ")'>Delete</button><button class='btn btn-info' onclick='btnEdit(" + item.Id + ")'>Edit</button></td><td>" + item.id + "</td><td>" + item.StudentName + "</td><td>" + item.StudentMobileNo + "</td><td>" + item.StudentMailId + "</td><td>" + item.Course + "</td><td>" + item.createdBy + "</td></tr >")
+                            $("#studenttable").append("<tr><td><td>" + item.id + "</td><td>" + item.StudentName + "</td><td>" + item.StudentMobileNo + "</td><td>" + item.StudentMailId + "</td><td>" + item.Course + "</td><td>" + item.createdBy + "</td><td><button class='btn btn-danger' onclick='Delete(" + item.id + ")'>Delete</button><button class='btn btn-info' onclick='Edit(" + item.id + ")'>Edit</button></td></tr >")
                         })
                     }
                 },
@@ -31,7 +34,61 @@
                 }
             })
     }
-  
+
+    function Delete(id) {
+
+        if (confirm("Are you sure?")) {
+
+            $.ajax({
+                "url": "/API/DeleteStudent?id=" + id,
+                "method": "GET",
+                success: function (rep) {
+                    console.log(rep);
+                    if (rep.Code == 0) {
+                        alert(rep.Message);
+                        Loaddata();
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        }
+    }
+    function Edit(id) {
+
+        // Redirect to the new view page in a different controller
+        window.location.href = "/AdminStudent/AddStudent/" + id;
+
+        $.ajax({
+            "url": "/API/FindStudentById?id=" + id,
+            "method": "GET",
+            success: function (rep) {
+                console.log(rep);
+                
+                if (rep.Code == 0) {
+
+                    var obj = rep.Message;
+                    $("#id").val(obj.id);
+                    $("#StudentName").val(obj.StudentName);
+                    $("#StudentMobileNo").val(obj.StudentMobileNo);
+                    $("#StudentMailId").val(obj.StudentMailId);
+                    $("#StudentDOB").val(obj.StudentDOB);
+                    $("#StudentPAN").val(obj.StudentPAN);
+                    $("#StudentAddress").val(obj.StudentAddress);
+                    $("#Course").val(obj.Course);
+                    $("#StudentLoginPassword").val(obj.StudentLoginPassword);
+                    $("#StudentStatus").val(obj.StudentStatus);
+
+                   
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+    }
+
 </script>
 
 
@@ -44,18 +101,18 @@
 
                 <p class="card-description">
                 </p>
-                <h1>All Student Information</h1>
-               
+
                 <table id="table1" class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Operation</th>
+                            <th>Status</th>
                             <th>Id</th>
                             <th>Name</th>
                             <th>Mobile Number</th>
                             <th>Email</th>
                             <th>Course Name</th>
                             <th>Fee</th>
+                            <th>Operation</th>
                         </tr>
                     </thead>
                     <tbody id="studenttable">
@@ -66,4 +123,22 @@
         </div>
     </div>
 
+</div>
+
+<div id="studmodel" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>
