@@ -7,7 +7,6 @@ using System.Web.Mvc;
 
 namespace Education_Service.Controllers
 {
-    [Authorize]
 
     public class AdminDashboardController : Controller
     {
