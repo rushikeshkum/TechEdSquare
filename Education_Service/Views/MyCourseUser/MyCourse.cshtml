@@ -1,188 +1,40 @@
-﻿
+﻿@model IEnumerable<Education_Service.tblClassCourse>
 @{
     ViewBag.Title = "MyCourse";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
+<style></style>
 
 
-<style>
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-    }
-
-    .main1 {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .cards1 {
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .cards1_item {
-        display: flex;
-        padding: 1rem;
-    }
-
-    .card_image {
-        height: calc(13*1.2rem);
-        padding: 1.2rem 1.2rem 0;
-        position: relative;
-    }
-
-        .card_image:before,
-        .card_image:after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            left: 60%;
-            top: 0;
-            height: 45px;
-            background: #e6e6e6b8;
-            transform: rotate(45deg);
-        }
-
-        .card_image:after {
-            transform: rotate(-45deg);
-            top: auto;
-            bottom: -22px;
-            left: 40%;
-        }
-
-        .card_image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-    .cards1_item {
-        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.25));
-    }
-
-
-    .card {
-        background-color: white;
-        border-radius: 0.25rem;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        padding-left: 30px;
-        background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px),#66afe1 0 1.2rem) right bottom /100% 100%,linear-gradient(red 0 0) 30px 0/2px 100% #fff;
-        background-repeat: no-repeat;
-        line-height: 1.2rem;
-        -webkit-mask: radial-gradient(circle .8rem at 2px 50%,#0000 98%,#000)0 0/100% 2.4rem;
-    }
-
-    .card_content {
-        padding: 1.2rem;
-    }
-
-    h2.card_title, p {
-        margin: 1.2rem 0;
-    }
-
-    h2.card_title {
-        font-size: 1.3em;
-    }
-
-    body1 {
-        font-family: monospace;
-        background: #eee;
-    }
-
-    html {
-        font-size: 15px;
-    }
-    .course_button {
-        padding: 10px;
-        background-color: #7038da;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .left_button {
-        float: left;
-    }
-
-    .right_button {
-        float: right;
-    }
-
-    /*Second style*/
-
-
-</style>
-
-<div class=" body1"></div>
-<div class="main1">
-    <ul class="cards1">
-        <li class="cards1_item">
-            <div class="card">
-                <div class="card_image"><img src="https://qph.cf2.quoracdn.net/main-qimg-f9514ea83444ef5dfded019d798ca48b-lq" alt="mixed vegetable salad in a mason jar. "></div>
-                <div class="card_content">
-                    <h2 class="card_title">Web Devlopment </h2>
-                    <div class="card_text">
-                        <p>Dig into the freshest veggies of the season! This salad-in-a-jar features a mixture of leafy greens and seasonal vegetables, fresh from the farmer's market.</p>
-
+<div class="row pt-3 pb-3">
+    @{
+        if (ViewBag.course != null)
+        {
+            foreach (var item in (List<tblClassCourse>)ViewBag.course)
+            {
+                <div class="card mx-auto text-center" style="width: 18rem;">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="@Url.Action("AllVideo", "Uservideo", new { id = item.id })">@Html.DisplayFor(modelItem => item.CourseName)</a></h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.CourseDiscription)</p>
+                        <a href="@Url.Action("AllVideo", "Uservideo", new { id = item.id })" class="btn btn-primary">All videos</a>
                     </div>
-                    <!-- Add left button for "Course Details" -->
-                    <a href="/uservideo/allvideo" class="course_button left_button">Course Details</a>
-
-                    <!-- Add right button for "Start Course" -->
-                    <a href="/uservideo/allvideo" class="course_button right_button">Start Course</a>
-                    
                 </div>
-            </div>
-        </li>
 
-        <li class="cards1_item">
-            <div class="card">
-                <div class="card_image"><img src="https://www.pcilearning.com/wp-content/uploads/2019/12/full_stack_web_2.jpg" alt="mixed vegetable salad in a mason jar. "></div>
-                <div class="card_content">
+            }
+        }
+        else
+        {
+            
+                <div class="card mx-auto text-center mt-125 mb-125 " style="width: 50rem;">
 
-
-                    <h2 class="card_title">Fullstack</h2>
-                    <div class="card_text">
-                        <p>Dig into the freshest veggies of the season! This salad-in-a-jar features a mixture of leafy greens and seasonal vegetables, fresh from the farmer's market.</p>
+                    <div class="card-body">
+                        <h5 class="card-title">Kindly contact your teacher........!</h5>
                     </div>
-                    <!-- Add left button for "Course Details" -->
-                    <button class="course_button left_button">< Course Details</button>
-                    <!-- Add right button for "Start Course" -->
-                    <button class="course_button right_button">Start Course</button>
                 </div>
-            </div>
-        </li>
+           
 
-        <li class="cards1_item">
-            <div class="card">
-                <div class="card_image"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Z86N1ke8JoUk8f4a_9k3YPm7qOtNPvla5JxiSnHzJA&s" alt="A side view of a plate of figs and berries. "></div>
-                <div class="card_content">
-                    <h2 class="card_title">Oracle</h2>
-                    <div class="card_text">
-                        <p><span class="note">Seasonal.</span></p>
-                        <p>A succulent sextet of fresh figs join with a selection of bodacious seasonal berries in this refreshing, shareable dessert.</p>
-                       
-                    </div>
-                    <!-- Add left button for "Course Details" -->
-                    <button class="course_button left_button">Course Details</button>
-                    <!-- Add right button for "Start Course" -->
-                    <button class="course_button right_button">Start Course</button>
-                </div>
-            </div>
-        </li>
-    </ul>
+        }
+    }
 </div>
-
-
-
-
-@*second card*@
 

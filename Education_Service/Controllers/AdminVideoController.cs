@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Education_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Education_Service.Controllers
 {
-    [Authorize]
+    [CustomAuthorizeRoles("Admin")]
     public class AdminVideoController : Controller
     {
         DB_techedEntities db = new DB_techedEntities();

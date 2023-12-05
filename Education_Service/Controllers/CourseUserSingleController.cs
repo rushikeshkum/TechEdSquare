@@ -12,13 +12,26 @@ namespace Education_Service.Controllers
         
         public ActionResult Index(int id)
         {
+            var tupleModel = new Tuple<tblEnquiry, tblClassCourse>(
+        new tblEnquiry(),
+        new tblClassCourse()
+    );
+            var obj = db.tblClassCourses.Where(c => c.CourseStatus == true).ToList();
+            if (obj != null)
+            {
+                ViewBag.Allcourse = obj;
+
+            }
+
+
             var course = db.tblClassCourses.FirstOrDefault(c => c.id == id);
 
             if (course != null)
             {
-                ViewBag.CourseName=course.CourseName;
+                ViewBag.id=course.id;
+                ViewBag.CourseName=course.CourseName;               
                 ViewBag.CourseCategory = course.tblClassCategory.CategoryName;
-                //ViewBag.EducatorProfile=course.EducatorProfile;
+                ViewBag.EducatorProfile=course.EducatorProfile;
                 ViewBag.CourseShortD = course.CourseDiscription;
                 ViewBag.CourseDetaildD = course.DetailedDiscription;
                 ViewBag.CourseDuration = course.CourseDuration;
@@ -27,7 +40,7 @@ namespace Education_Service.Controllers
 
             }
 
-            return View();
+            return View(tupleModel);
         }
 
 

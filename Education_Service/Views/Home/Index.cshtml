@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Education_Service.tblClassCourse>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -89,6 +89,8 @@
                 </div>
                 <div class="col-lg-6 offset-lg-1 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-8 offset-2">
                     <div class="row category-slied mt-40">
+
+
                         <div class="col-lg-4">
                             <a href="#">
                                 <span class="singel-category text-center color-1">
@@ -264,191 +266,50 @@
             </div>
         </div> <!-- row -->
         <div class="row course-slied mt-30">
-            <div class="col-lg-4">
-                <div class="singel-course">
-                    <div class="thum">
-                        <div class="image">
-                            <img src="~/images/course/cu-1.jpg" alt="Course">
-                        </div>
-                        <div class="price">
-                           
-                        </div>
-                    </div>
-                    <div class="cont">
-                        <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>(20 Reviws)</span>
-                        <a href="courses-singel.html"><h4>Learn basis javascirpt from start for beginner</h4></a>
-                        <div class="course-teacher">
-                            <div class="thum">
-                                <a href="#"><img src="~/images/course/teacher/t-1.jpg" alt="teacher"></a>
+            @foreach (var item in (List<tblClassCourse>)ViewBag.Allcourse)
+            {
+
+                <div class="col-lg-4">
+                    <div class="singel-course">
+                        <div class="thum">
+                            <div class="image">
+                                @if (item.CourseImage != null)
+                                {
+                                    <img src="~/UploadedCourseImg/@item.CourseImage" alt="Course" width="350px" />
+                                }
                             </div>
-                            <div class="name">
-                                <a href="#"><h6>Mark anthem</h6></a>
-                            </div>
-                            <div class="admin">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                </ul>
+                            <div class="price">
+                                @Html.DisplayFor(modelItem => item.CourseFees)/-
                             </div>
                         </div>
-                    </div>
-                </div> <!-- singel course -->
-            </div>
-            <div class="col-lg-4">
-                <div class="singel-course">
-                    <div class="thum">
-                        <div class="image">
-                            <img src="~/images/course/cu-2.jpg" alt="Course">
-                        </div>
-                        <div class="price">
-                           
-                        </div>
-                    </div>
-                    <div class="cont">
-                        <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>(20 Reviws)</span>
-                        <a href="courses-singel.html"><h4>Learn basis javascirpt from start for beginner</h4></a>
-                        <div class="course-teacher">
-                            <div class="thum">
-                                <a href="#"><img src="~/images/course/teacher/t-2.jpg" alt="teacher"></a>
-                            </div>
-                            <div class="name">
-                                <a href="#"><h6>Mark anthem</h6></a>
-                            </div>
-                            <div class="admin">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                </ul>
+                        <div class="cont">
+                            <ul>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                            <span>(20 Reviws)</span>
+                            <a href="@Url.Action("index", "courseusersingle", new { id = item.id })"><h4> @Html.DisplayFor(modelItem => item.CourseName)</h4></a>
+                            <div class="course-teacher">
+
+                                <div class="name">
+                                    <a><h6>  @Html.DisplayFor(modelItem => item.tblEducatorDetail.EducatorName)</h6></a>
+                                </div>
+                                <div class="admin">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
+                                        <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div> <!-- singel course -->
-            </div>
-            <div class="col-lg-4">
-                <div class="singel-course">
-                    <div class="thum">
-                        <div class="image">
-                            <img src="~/images/course/cu-3.jpg" alt="Course">
-                        </div>
-                        <div class="price">
-                           
-                        </div>
-                    </div>
-                    <div class="cont">
-                        <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>(20 Reviws)</span>
-                        <a href="courses-singel.html"><h4>Learn basis javascirpt from start for beginner</h4></a>
-                        <div class="course-teacher">
-                            <div class="thum">
-                                <a href="#"><img src="~/images/course/teacher/t-3.jpg" alt="teacher"></a>
-                            </div>
-                            <div class="name">
-                                <a href="#"><h6>Mark anthem</h6></a>
-                            </div>
-                            <div class="admin">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- singel course -->
-            </div>
-            <div class="col-lg-4">
-                <div class="singel-course">
-                    <div class="thum">
-                        <div class="image">
-                            <img src="~/images/course/cu-4.jpg" alt="Course">
-                        </div>
-                        <div class="price">
-                           
-                        </div>
-                    </div>
-                    <div class="cont">
-                        <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>(20 Reviws)</span>
-                        <a href="courses-singel.html"><h4>Learn basis javascirpt from start for beginner</h4></a>
-                        <div class="course-teacher">
-                            <div class="thum">
-                                <a href="#"><img src="~/images/course/teacher/t-4.jpg" alt="teacher"></a>
-                            </div>
-                            <div class="name">
-                                <a href="#"><h6>Mark anthem</h6></a>
-                            </div>
-                            <div class="admin">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- singel course -->
-            </div>
-            <div class="col-lg-4">
-                <div class="singel-course">
-                    <div class="thum">
-                        <div class="image">
-                            <img src="~/images/course/cu-5.jpg" alt="Course">
-                        </div>
-                        <div class="price">
-                            
-                        </div>
-                    </div>
-                    <div class="cont">
-                        <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <span>(20 Reviws)</span>
-                        <a href="courses-singel.html"><h4>Learn basis javascirpt from start for beginner</h4></a>
-                        <div class="course-teacher">
-                            <div class="thum">
-                                <a href="#"><img src="~/images/course/teacher/t-5.jpg" alt="teacher"></a>
-                            </div>
-                            <div class="name">
-                                <a href="#"><h6>Mark anthem</h6></a>
-                            </div>
-                            <div class="admin">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user"></i><span>31</span></a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i><span>10</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- singel course -->
-            </div>
+                    </div> <!-- singel course -->
+                    
+                </div>
+            }
+            
         </div> <!-- course slied -->
     </div> <!-- container -->
 </section>
