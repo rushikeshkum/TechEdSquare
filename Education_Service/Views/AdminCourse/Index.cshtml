@@ -21,7 +21,7 @@
 
     </div>
 
-
+</div>
 
     <br />
     <div class="row">
@@ -34,10 +34,16 @@
 
                     <div class="card-body">
                         <a href="@Url.Action("Index", "AdminVideo", new { courseId = item.id })">
-                            <img src="https://images2.alphacoders.com/133/1336516.png" class="w-100 h-5">
-                            <br />
-                            <br />
+                                                  
+                            @if (item.CourseImage != null)
+                            {
+                                <img src="~/UploadedCourseImg/@item.CourseImage" width="370px"  />
+                                
 
+                            }
+
+                        <br />
+                        <br />                       
                             <h2 class="card-title">@Html.DisplayFor(modelItem => item.CourseName)</h2>
 
                             @if (item.CourseStatus.ToString() == "True")

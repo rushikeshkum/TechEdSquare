@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Education_Service.tblClassCourse>
+
+@{
+    ViewBag.Title = "trmp";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<h2>trmp</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BatchInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EducatorProfile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseDiscription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DetailedDiscription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseDuration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseFees)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoursePreviewLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BatchInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EducatorProfile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseDiscription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DetailedDiscription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseDuration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseFees)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoursePreviewLink)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,4 +1,5 @@
-﻿
+﻿@model Education_Service.tblEnquiry
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -53,35 +54,47 @@
                         <h2>Keep in touch</h2>
                     </div> <!-- section title -->
                     <div class="main-form pt-45">
-                        <form id="contact-form" action="#" method="post" data-toggle="validator">
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="name" type="text" placeholder="Your name" data-error="Name is required." required="required">
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "Your full name" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        
                                         <div class="help-block with-errors"></div>
                                     </div> <!-- singel form -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="email" type="email" placeholder="Email" data-error="Valid email is required." required="required">
+                                        @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" , @required = "required", @placeholder = "Email" } })
+                                        @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+                                       <div class="help-block with-errors"></div>
+                                    </div> <!-- singel form -->
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="singel-form form-group">
+                                        @Html.DropDownListFor(model => model.InterestedIn, (List<SelectListItem>)ViewBag.clist, new { @class = "form-control" } )
+                                        @Html.ValidationMessageFor(model => model.InterestedIn, "", new { @class = "text-danger" })                                       
                                         <div class="help-block with-errors"></div>
                                     </div> <!-- singel form -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="subject" type="text" placeholder="Subject" data-error="Subject is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- singel form -->
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="singel-form form-group">
-                                        <input name="phone" type="text" placeholder="Phone" data-error="Phone is required." required="required">
+                                        @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", @required = "required",@placeholder = "Phone" } })
+                                        @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+                                        
                                         <div class="help-block with-errors"></div>
                                     </div> <!-- singel form -->
                                 </div>
                                 <div class="col-md-12">
                                     <div class="singel-form form-group">
-                                        <textarea name="messege" placeholder="Messege" data-error="Please,leave us a message." required="required"></textarea>
+                                        @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "Messege" } })
+                                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                       
                                         <div class="help-block with-errors"></div>
                                     </div> <!-- singel form -->
                                 </div>
@@ -92,7 +105,8 @@
                                     </div> <!-- singel form -->
                                 </div>
                             </div> <!-- row -->
-                        </form>
+                        }
+
                     </div> <!-- main form -->
                 </div> <!--  contact from -->
             </div>

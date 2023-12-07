@@ -1,4 +1,4 @@
-﻿
+﻿@model Education_Service.tblAnnouncement
 @{
     ViewBag.Title = "MakeAnnouncement";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -6,68 +6,84 @@
 
 <h2>MakeAnnouncement</h2>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    // Check TempData for the DeleteSuccess flag
+    var deleteSuccess = @(TempData["DeleteSuccess"] as bool?);
 
+    // Display SweetAlert confirmation message if the delete was successful
+    if (deleteSuccess) {
+        swal("Success!", "Announcement deleted successfully!", "success");
+    } else if (deleteSuccess === false) {
+        swal("Error!", "Error deleting announcement. Please try again.", "error");
+    }
+</script>
 
 <div class="content-wrapper">
-    <style>
-
-        label {
-            font-size: 1.2em;
-            margin-right: 10px;
-        }
-
-        input {
-            padding: 8px;
-            font-size: 1em;
-        }
-
-        .form-group {
-            padding-right: 80px;
-            padding-left: 10px;
-        }
-    </style>
-    <div class="col-3"></div>
-    <div class="col-9 grid-margin stretch-card">
+    <div class="col-2"></div>
+    <div class="col-10 grid-margin stretch-card">
         <div class="card " style="margin-left: 80px; background-color: #DAD8F1">
             <div class="card-body">
 
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                <form class="forms-sample ">
-                    <div class="form-group ">
+                    <div class="form-group">
                         <label for="exampleInputName1">Announcement Title</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter Name">
+                        @Html.EditorFor(model => model.AnnouncementTitle, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Announcement Title here" } })
+                        @Html.ValidationMessageFor(model => model.AnnouncementTitle, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputName1">Announcement Discription</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter Mobile No">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail3">Select date</label>
-                        <input type="date" class="form-control" id="birthday" placeholder="Select DOB">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword4">Select Course Name</label>
-                        <select class="form-control form-control-lg" id="exampleFormControlSelect2">
-
-                            <option>Full Stack Devlopement</option>
-                            <option>UI/UX</option>
-                            <option>MERN stack</option>
-                            <option>Cyber Security</option>
-                            <option>Machine Learning</option>
-                            <option>Cloud Computing</option>
-                        </select>
+                        <label for="exampleInputName1">Announcement Description</label>
+                        @Html.EditorFor(model => model.AnnouncementDiscription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Announcement Description" } })
+                        @Html.ValidationMessageFor(model => model.AnnouncementDiscription, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail3">Message</label>
-                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="">
+                        <label for="exampleInputName1">Select course</label>
+                        @Html.DropDownListFor(model => model.CourseId, (List<SelectListItem>)ViewBag.ClassCourseList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
                     </div>
 
-            <button type="submit" class="btn btn-gradient-primary me-2">Make Announcement</button>
-            <button class="btn btn-light">Cancel</button>
-            </form>
+                    <button type="submit" class="btn btn-gradient-primary me-2">Make Announcement / Save</button>
+                    <button class="btn btn-light">Cancel</button>
+
+                    <br /><br />
+
+                    <h2>Edit/Delete Announcement</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Announcement Title</th>
+                                    <th>Announcement Description</th>
+                                    <th>Date</th>
+                                    <th>Course Name</th>
+                                    <th>Edit/Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.Announcements)
+                                {
+                                    <tr>
+                                        <td>@item.AnnouncementTitle</td>
+                                        <td>@item.AnnouncementDiscription</td>
+                                        <td>@item.Date.ToShortDateString()</td>
+                                        <td>@item.tblClassCourse.CourseName</td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "MakeAnnouncement", new { id = item.id }, new { @class = "btn btn-success btn-sm" }) |
+                                            @Html.ActionLink("Delete", "DeleteAnnouncement", new { id = item.id }, new { @class = "btn btn-info btn-sm" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
         </div>
     </div>
-</div>
 </div>

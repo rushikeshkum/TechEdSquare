@@ -32,8 +32,8 @@
 
                     <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                         <div class="logo">
-                            <a href="index-2.html">
-                                
+                            <a href="/home/index">
+
                                 <img src="~/images/techadlogo4.png" alt="Logo" width="250px">
                             </a>
                         </div>
@@ -45,14 +45,28 @@
                             <li class="nav-item">
                                 <a href="/About/index">About us</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/MyCourseUser/MyCourse">My course<button class="sub-nav-toggler"> <i class="fa fa-chevron-down"></i> </button></a>
-                                <ul class="sub-menu">
-                                    <li><a href="/userprofie/profile">User profile</a></li>
-                                    <li><a href="contact-2.html">Payment history</a></li>
-                                    <li><a href="contact-2.html">Anouncement</a></li>
-                                </ul>
-                            </li>
+
+                            @{
+                                if (User.Identity.IsAuthenticated)
+                                {
+                                    DB_techedEntities db = new DB_techedEntities();
+                                    string username = User.Identity.Name;
+                                    var obj = db.tblStudentDatas.Where(w => w.StudentCourseUsername == username).FirstOrDefault();
+                                    if (obj != null && obj.Roles == "Student")
+                                    {
+                                        <li class="nav-item">
+                                            <a href="/MyCourseUser/MyCourse">My course<button class="sub-nav-toggler"> <i class="fa fa-chevron-down"></i> </button></a>
+                                            <ul class="sub-menu">
+                                                <li><a href="/userprofie/profile">User profile</a></li>
+                                                <li><a href="contact-2.html">Payment history</a></li>
+                                                <li><a href="contact-2.html">Anouncement</a></li>
+                                            </ul>
+                                        </li>
+
+                                    }
+                                }
+                            }
+
                             <li class="nav-item">
                                 <a href="/CourseUser/index">Courses</a>
                             </li>
@@ -67,17 +81,52 @@
                             <li class="nav-item">
                                 <a href="/Contact/Index">Contact</a>
                             </li>
+                            @{
+                                if (User.Identity.IsAuthenticated)
+                                {
+                                    DB_techedEntities db = new DB_techedEntities();
+                                    string username = User.Identity.Name;
+                                    var obj = db.tblAdmins.Where(w => w.AdminUsername == username).FirstOrDefault();
+                                    if (obj != null && obj.Rolle == "Admin")
+                                    {
+                                        <li class="nav-item">
+                                            <a href="/Admindashboard/index">Admin </a>
+                                        </li>
+
+                                    }
+                                }
+                            }
 
                         </ul>
                     </div>
-                    
+
                 </nav> <!-- nav -->
             </div>
             <div class="col-lg-1 col-md-2 col-sm-3 col-4 mt-2">
-                <div class="right-icon text-right">
-                    <div class="button float-left">
-                        <a href="/LoginUser/Login" class="main-btn">Login</a>
-                    </div>
+                <div class="right-icon text-right nav-item">
+                    @{
+
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            DB_techedEntities db = new DB_techedEntities();
+                            string username = User.Identity.Name;
+                            var obj = db.tblStudentDatas.Where(w => w.StudentCourseUsername == username).FirstOrDefault();
+                            if (obj != null && obj.Roles == "Student")
+                            {
+                                <div class="button float-left">
+                                    <a href="/LoginUser/ULogOut" class="main-btn">Logout</a>
+                                </div>
+
+                            }
+                        }
+                        else
+                        {
+                            <div class="button float-left">
+                                <a href="/LoginUser/Login" class="main-btn">Login</a>
+                            </div>
+                        }
+                    }
+
                 </div> <!-- right icon -->
             </div>
         </div> <!-- row -->

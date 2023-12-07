@@ -30,6 +30,7 @@ namespace Education_Service.Controllers
 
             try
             {
+                s.Roles = "Student";
                 db.tblStudentDatas.Add(s);
                 db.SaveChanges();
                 rep.Code = 0;
@@ -92,6 +93,7 @@ namespace Education_Service.Controllers
             return Json(rep, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetAllData()
        
         //API COURSES
         public ActionResult GetAllCourses()
@@ -102,7 +104,25 @@ namespace Education_Service.Controllers
             return Json(objlist, JsonRequestBehavior.AllowGet);
         }
 
-       
+        [HttpPost]
+        //public JsonResult SaveCourses(tblClassCourse c)
+        //{
+        //    try
+        //    {
+        //        db.tblClassCourses.Add(c);
+        //        db.SaveChanges();
+        //        rep.Code = 0;
+        //        rep.Message = "Course Inserted";
+        //        return Json(rep, JsonRequestBehavior.AllowGet);
+        //    }
+        //    catch (Exception er)
+        //    {
+        //        rep.Code = -1;
+        //        rep.Message = er.Message;
+        //        return Json(er.Message, JsonRequestBehavior.AllowGet);
+
+        //    }
+        //}
         public JsonResult SaveCourse(tblClassCourse c)//passing material from outside 122
         {
             ResponseModel rep = new ResponseModel();
@@ -176,7 +196,6 @@ namespace Education_Service.Controllers
                 rep.Message = "Course Deleted Succesfully";
             }
             return Json(rep, JsonRequestBehavior.AllowGet);
-
         }
         
     }
