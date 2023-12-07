@@ -14,6 +14,13 @@
     <link href="~/AdminContent/assets/css/style.css" rel="stylesheet" />
     <link href="~/AdminContent/assets/css/admin.css" rel="stylesheet" />
     <link href="~/AdminContent/assets/css/jquery.dataTables.min.css" rel="stylesheet" />
+    
+    @*<link href="~/css/bootstrap.css" rel="stylesheet" />
+
+        <script src="~/js/bootstrap.bundle.js"></script>*@
+    <script src="~/js/jquery-3.7.1.js"></script>
+
+
 </head>
 <body id="body-pd">
 
@@ -87,13 +94,13 @@
 
 
 
-                    <a href="/AdminProfile/index" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Profile</span> </a>
-                </div>
-            </div> <a href="/Admin/Logout" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
-        </nav>
-    </div>
-    <!--Container Main start-->
-    <div class="height-100 bg-light">
+                        <a href="/AdminProfile/index" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Profile</span> </a>
+                    </div>
+                </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+            </nav>
+        </div>
+        <!--Container Main start-->
+        <div class="height-100 bg-light">
 
         @RenderBody()
     </div>
@@ -103,5 +110,7 @@
     <script src="~/AdminContent/assets/js/bootstrap.bundle.js"></script>
     <script src="~/AdminContent/assets/js/jquery-3.7.1.js"></script>
     <script src="~/AdminContent/assets/js/jquery.dataTables.min.js"></script>
+    @*<link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="~/js/jquery.dataTables.min.js"></script>*@
 </body>
 </html>
