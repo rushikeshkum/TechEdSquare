@@ -36,7 +36,7 @@
 
                 <a href="/AdminDashboard/Index" class="nav_logo"> <i class='bx bx-user nav_logo-icon'></i> <span class="nav_logo-name">@User.Identity.Name</span> </a>
                 <div class="nav_list">
-                    <a href="/AdminDashboard/Index" class="nav_link"><i class='bx bx-grid-alt nav_icon'></i><span class="nav_name">Dashboard</span> </a>
+                    <a href="/AdminDashboard/Index" class="nav_link"><i class='bx bx-grid-alt nav_icon'></i><span class="nav_name @(ViewBag.title == "Dasboard" ? "active" : "")">Dashboard</span> </a>
                     @*<a href="" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>*@
                     @*<a href="" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">all students</span> </a>
         <a href="" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Add  students</span> </a>*@
@@ -44,14 +44,14 @@
 
                     <a class="nav_link" data-bs-toggle="collapse" href="#ui-basicStud" aria-expanded="false" aria-controls="ui-basic">
                         <i class='bx bx-user nav_icon'></i>
-                        <span class="nav_name">Student</span>
+                        <span class="nav_name @(ViewBag.title == "Home" ? "active" : "")">Student</span>
                     </a>
                     
 
                     <div class="collapse" id="ui-basicStud">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav_name"> <a class="nav_link  " href="/adminstudent/index">All Students Details</a></li>
-                            <li class="nav_name"> <a class="nav_link " href="/adminstudent/AddStudent"> ADd Student Details</a></li>
+                            <li class="nav_name"> <a class="nav_link @(ViewBag.title == "Home" ? "active" : "")  " href="/adminstudent/index">All Students Details</a></li>
+                            <li class="nav_name"> <a class="nav_link@(ViewBag.title == "Home" ? "active" : "") " href="/adminstudent/AddStudent"> ADd Student Details</a></li>
                         </ul>
                     </div>
 
@@ -61,8 +61,9 @@
                     </a>
                     <div class="collapse" id="ui-basicCourse">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav_name"> <a class="nav_link  " href="/AdminCourse/Index">All Courses </a></li>
-                            <li class="nav_name"> <a class="nav_link " href="/AdminCourse/AddCourse"> Add Courses </a></li>
+                           
+                            <li class="nav_name"> <a class="nav_link @(ViewBag.title == "Home" ? "active" : "") " href="/AdminCourse/Index">All Courses </a></li>
+                            <li class="nav_name"> <a class="nav_link @ViewBag.title == "Home" ? "active" : "") " href="/AdminCourse/AddCourse"> Add Courses </a></li>
                         </ul>
                     </div>
                     <a href="/AdminCategory/AddCourseCategory" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Course Category</span> </a>
