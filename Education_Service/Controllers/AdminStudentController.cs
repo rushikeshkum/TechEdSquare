@@ -13,7 +13,8 @@ namespace Education_Service.Controllers
         // GET: AdminStudent
         public ActionResult AllStudent()
         {
-            return View();
+            var obj = db.tblStudentDatas.ToList();
+            return View(obj);
         }
         public ActionResult AddStudent()
         {
