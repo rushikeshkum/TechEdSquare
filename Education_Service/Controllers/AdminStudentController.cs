@@ -12,9 +12,10 @@ namespace Education_Service.Controllers
         DB_techedEntities db = new DB_techedEntities();
 
         // GET: AdminStudent
-        public ActionResult Index()
+        public ActionResult AllStudent()
         {
-            return View();
+            var obj = db.tblStudentDatas.ToList();
+            return View(obj);
         }
         public ActionResult AddStudent()
         {

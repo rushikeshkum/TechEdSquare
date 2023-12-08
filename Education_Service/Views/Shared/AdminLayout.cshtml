@@ -14,6 +14,13 @@
     <link href="~/AdminContent/assets/css/style.css" rel="stylesheet" />
     <link href="~/AdminContent/assets/css/admin.css" rel="stylesheet" />
     <link href="~/AdminContent/assets/css/jquery.dataTables.min.css" rel="stylesheet" />
+    
+    @*<link href="~/css/bootstrap.css" rel="stylesheet" />
+
+        <script src="~/js/bootstrap.bundle.js"></script>*@
+    <script src="~/js/jquery-3.7.1.js"></script>
+
+
 </head>
 <body id="body-pd">
 
@@ -36,7 +43,7 @@
 
                 <a href="/AdminDashboard/Index" class="nav_logo"> <i class='bx bx-user nav_logo-icon'></i> <span class="nav_logo-name">@User.Identity.Name</span> </a>
                 <div class="nav_list">
-                    <a href="/AdminDashboard/Index" class="nav_link"><i class='bx bx-grid-alt nav_icon'></i><span class="nav_name">Dashboard</span> </a>
+                    <a href="/AdminDashboard/Index" class="nav_link"><i class='bx bx-grid-alt nav_icon'></i><span class="nav_name @(ViewBag.title == "Dasboard" ? "active" : "")">Dashboard</span> </a>
                     @*<a href="" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>*@
                     @*<a href="" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">all students</span> </a>
         <a href="" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Add  students</span> </a>*@
@@ -44,14 +51,14 @@
 
                     <a class="nav_link" data-bs-toggle="collapse" href="#ui-basicStud" aria-expanded="false" aria-controls="ui-basic">
                         <i class='bx bx-user nav_icon'></i>
-                        <span class="nav_name">Student</span>
+                        <span class="nav_name @(ViewBag.title == "Home" ? "active" : "")">Student</span>
                     </a>
-                    
+
 
                     <div class="collapse" id="ui-basicStud">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav_name"> <a class="nav_link  " href="/adminstudent/index">All Students Details</a></li>
-                            <li class="nav_name"> <a class="nav_link " href="/adminstudent/AddStudent"> Add Student Details</a></li>
+                            <li class="nav_name"> <a class="nav_link @(ViewBag.title == "Home" ? "active" : "")  " href="/adminstudent/index">All Students Details</a></li>
+                            <li class="nav_name"> <a class="nav_link@(ViewBag.title == "Home" ? "active" : "") " href="/adminstudent/AddStudent"> ADd Student Details</a></li>
                         </ul>
                     </div>
 
@@ -61,17 +68,34 @@
                     </a>
                     <div class="collapse" id="ui-basicCourse">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav_name"> <a class="nav_link  " href="/AdminCourse/Index">All Courses </a></li>
-                            <li class="nav_name"> <a class="nav_link " href="/AdminCourse/AddCourse"> Add Courses </a></li>
+                           
+                            <li class="nav_name"> <a class="nav_link @(ViewBag.title == "Home" ? "active" : "") " href="/AdminCourse/Index">All Courses </a></li>
+                            <li class="nav_name"> <a class="nav_link @ViewBag.title == "Home" ? "active" : "") " href="/AdminCourse/AddCourse"> Add Courses </a></li>
                         </ul>
                     </div>
+
                     <a href="/AdminCategory/AddCourseCategory" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Course Category</span> </a>
-                    <a href="/AdminVideo/index" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Videos</span> </a>
+
+                    <a class="nav_link" data-bs-toggle="collapse" href="#ui-basicSales" aria-expanded="false" aria-controls="ui-basic">
+                        <i class='bx bx-user nav_icon'></i>
+                        <span class="nav_name">Sales</span>
+                    </a>
+                    <div class="collapse" id="ui-basicSales">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav_name"> <a class="nav_link  " href="/AdminCourse/Index">Transaction</a></li>
+                            <li class="nav_name"> <a class="nav_link " href="/Sales/Index"> Sales </a></li>
+                            <li class="nav_name"> <a class="nav_link " href="/AdminCourse/AddCourse"> Sales Return</a></li>
+                        </ul>
+                    </div>
+
+
                     <a href="/AdminAnnouncement/MakeAnnouncement" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Announcement</span> </a>
+
                     <a class="nav_link" data-bs-toggle="collapse" href="#ui-basicReport" aria-expanded="false" aria-controls="ui-basic">
                         <i class='bx bx-user nav_icon'></i>
                         <span class="nav_name">Reports</span>
                     </a>
+
                     <div class="collapse" id="ui-basicReport">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav_name"> <a class="nav_link  " href="">Sales</a></li>
@@ -86,13 +110,13 @@
 
 
 
-                    <a href="/AdminProfile/index" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Profile</span> </a>
-                </div>
-            </div> <a href="/Admin/Logout" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
-        </nav>
-    </div>
-    <!--Container Main start-->
-    <div class="height-100 bg-light">
+                        <a href="/AdminProfile/index" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Profile</span> </a>
+                    </div>
+                </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+            </nav>
+        </div>
+        <!--Container Main start-->
+        <div class="height-100 bg-light">
 
         @RenderBody()
     </div>
@@ -102,5 +126,7 @@
     <script src="~/AdminContent/assets/js/bootstrap.bundle.js"></script>
     <script src="~/AdminContent/assets/js/jquery-3.7.1.js"></script>
     <script src="~/AdminContent/assets/js/jquery.dataTables.min.js"></script>
+    @*<link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="~/js/jquery.dataTables.min.js"></script>*@
 </body>
 </html>

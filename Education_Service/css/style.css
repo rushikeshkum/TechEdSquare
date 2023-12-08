@@ -1338,13 +1338,13 @@ p {
 #video-feature{
     position: relative;
 }
-.feature-bg{
+.feature-bg {
     position: absolute;
     top: 0;
     right: 0;
     width: 50%;
     height: 100%;
-    background-color: rgba(7, 41, 77, 0.9);
+    background-color: rgb(97 63 219 / 90%);
 }
 
 .video{
@@ -1699,8 +1699,8 @@ p {
     13. FOOTER css 
 ======================================================*/
 
-.footer-top{
-    background-color: #07294d;
+.footer-top {
+    background-color: #7038da;
 }
 
 .footer-about {
@@ -2031,7 +2031,7 @@ p {
 }
 .singel-counter span{
     font-size: 36px;
-    color: #ffc600;
+    color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
 }
@@ -2377,9 +2377,9 @@ p {
     color: #8a8a8a;
 }
 
-.courses-top-search .nav .nav-item a.active{
-    color: #ffc600;
-}
+    .courses-top-search .nav .nav-item a.active {
+        color: #c02fff;
+    }
 
 .courses-search{
     position: relative;
@@ -2430,11 +2430,11 @@ p {
     -webkit-transition: all 0.4s linear;
     transition: all 0.4s linear;
 }
-.courses-pagination .pagination .page-item a.active,
-.courses-pagination .pagination .page-item a:hover{
-    background-color: #ffc600;
-    border-color: #ffc600;
-}
+    .courses-pagination .pagination .page-item a.active,
+    .courses-pagination .pagination .page-item a:hover {
+        background-color: #a571e7;
+        border-color: #c5b6d0;
+    }
 
 
 /*=====================================================
