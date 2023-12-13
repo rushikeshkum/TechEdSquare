@@ -93,7 +93,7 @@ namespace Education_Service.Controllers
             return Json(rep, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetAllData()
+        //public JsonResult GetAllData()
        
         //API COURSES
         public ActionResult GetAllCourses()

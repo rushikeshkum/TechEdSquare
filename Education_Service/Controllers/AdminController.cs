@@ -27,7 +27,7 @@ namespace Education_Service.Controllers
             {
                 FormsAuthentication.SetAuthCookie(obj.UsernameAdmin , false);
 
-                return RedirectToAction("Index", "AdminDashboard");
+                return RedirectToAction("Index", "AdminCourse");
             }
             else
             {

@@ -1,98 +1,68 @@
-﻿
+﻿@model Education_Service.tblStudentData
+
 @{
-    ViewBag.Title = "profile";
+    ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+      integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+
+    <div class="col-xl-8">
+        <div class="card mb-4">
+            <div class="card-header">Account Details</div>
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    <div class="mb-3">
+                        <label class="small mb-1" for="inputUsername">Username </label>
+                        @Html.TextBoxFor(model => model.StudentCourseUsername, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="mb-3">
+                        <label class="small mb-1" for="inputUsername">Full Name</label>
+                        @Html.TextBoxFor(model => model.StudentName, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                        @Html.TextBoxFor(model => model.StudentMailId, new { @class = "form-control" })
+                    </div>
+                    <div class=" mb-3">
+                        <div class="">
+                            <label class="small mb-1" for="inputFirstName">Mobile No</label>
+                            @Html.TextBoxFor(model => model.StudentMobileNo, new { @class = "form-control" })
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="mb-3">
+
+                        <div class="">
+                            <label class="small mb-1" for="inputOrgName">Address</label>
+                            @Html.TextBoxFor(model => model.StudentAddress, new { @class = "form-control" })
+                        </div>
+
+                    </div>
 
 
 
+                    <div class="row gx-3 mb-3">
+                        
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="inputBirthday">Date Of Birthdate</label>
+                            @Html.TextBoxFor(model => model.StudentDOB, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    if (ViewBag!=null)
+                    {
+                        <span class="bg-secondary">@ViewBag.msg</span>
+                    }
+                    <button class="btn btn-primary" type="submit">Save changes</button>
+                   
+                }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
-<div class="container-xl px-4 mt-4">
-    <!-- Account page navigation-->
-   
-    <hr class="mt-0 mb-4">
-    <div class="row">
-        <div class="col-xl-4">
-            <!-- Profile picture card-->
-            <div class="card mb-4 mb-xl-0">
-                <div class="card-header">Profile Picture</div>
-                <div class="card-body text-center">
-                    <!-- Profile picture image-->
-                    <img class="img-account-profile rounded-circle mb-2" src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="">
-                    <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                    <!-- Profile picture upload button-->
-                    <button class="btn btn-primary" type="button">Upload new image</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-8">
-            <!-- Account details card-->
-            <div class="card mb-4">
-                <div class="card-header">Account Details</div>
-                <div class="card-body">
-                    <form>
-                        <!-- Form Group (username)-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputUsername">Username </label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username">
-                        </div>
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputUsername">Full Name</label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="Enter to change your name">
-                        </div>
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (first name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputFirstName">Mobile No</label>
-                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your Mobile No." value="Valerie">
-                            </div>
-                            <!-- Form Group (last name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLastName">Email</label>
-                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your Email" value="Luna">
-                            </div>
-                        </div>
-                        <!-- Form Row        -->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (organization name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputOrgName">Organization name</label>
-                                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap">
-                            </div>
-                            <!-- Form Group (location)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLocation">Location</label>
-                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA">
-                            </div>
-                        </div>
-                        <!-- Form Group (email address)-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
-                        </div>
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (phone number)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Phone number</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
-                            </div>
-                            <!-- Form Group (birthday)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
-                            </div>
-                        </div>
-                        <!-- Save changes button-->
-                        <button class="btn btn-primary" type="button">Save changes</button>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
-</div>
-
+        </div>
+    </div>
