@@ -35,6 +35,21 @@ namespace Education_Service.Controllers
             return View("AddStudent");
         }
 
-        
+        [HttpPost]
+        public ActionResult AddStudent(tblStudentData stu)
+        {
+            if (stu!=null)
+            {
+                var obj = db.tblStudentDatas.Attach(stu);
+                db.Entry(obj).State = stu.id > 0 ? System.Data.Entity.EntityState.Modified : System.Data.Entity.EntityState.Added;
+                db.SaveChanges();
+
+                
+
+            }
+            var studID = stu.id;
+            return RedirectToAction("Index", "admintransaction", new { id = studID });
+        }
+
     }
 }
