@@ -33,14 +33,14 @@
 
     <div class="form-group">
         <label for="exampleInputName1">Selected Course </label>
-        @Html.DropDownListFor(model => model.TrnType, (List<SelectListItem>)ViewBag.course, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.TrnType, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(model => model.Courseid, (List<SelectListItem>)ViewBag.course, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Courseid, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
         <label for="exampleInputName1">Transaction type</label>
-        @Html.DropDownListFor(model => model.TrnType, (List<SelectListItem>)ViewBag.trnmodes, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.TrnType, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(model => model.TrnMode, (List<SelectListItem>)ViewBag.trnmodes, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.TrnMode, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">

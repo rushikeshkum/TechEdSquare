@@ -11,39 +11,51 @@ namespace Education_Service.Controllers
         DB_techedEntities db = new DB_techedEntities();
 
         // GET: AdminTransaction
-        public ActionResult Index(int id=0)
+        public ActionResult Index(int Id=0)
         {
 
-            List<SelectListItem> trytype = new List<SelectListItem>();
+            
 
-            var objlist = db.tblTrnModes.Select(s => new { s.id, s.TrnMode }).ToList();
-            foreach (var item in objlist)
+            if (Id > 0)
             {
-                SelectListItem o = new SelectListItem();
-                o.Text = item.TrnMode;
-                o.Value = item.id.ToString();
-                trytype.Add(o);
+                var studdata = db.tblStudentDatas.Where(w => w.id == Id).FirstOrDefault();
+                var transactionModel = new Education_Service.tblTransaction
+                {
+                    StudentId = studdata.id // Assuming you have a StudentId property in tblStudentDatas
+                    //ViewBag.course = studdata.SubscribedCourseId;
+                };
+
+                // Pass the model to the view
+                return View(transactionModel);
+
+
+
             }
-
-            List<SelectListItem> coursel = new List<SelectListItem>();
-            var courseist = db.tblClassCourses.Select(s => new { s.id, s.CourseName }).ToList();
-            foreach (var item in courseist)
+            else
             {
-                SelectListItem c = new SelectListItem();
-                c.Text = item.CourseName;
-                c.Value = item.id.ToString();
-                coursel.Add(c);
-            }
+                List<SelectListItem> trytype = new List<SelectListItem>();
 
-            ViewBag.course = coursel;
-            ViewBag.trnmodes = trytype;
+                var objlist = db.tblTrnModes.Select(s => new { s.id, s.TrnMode }).ToList();
+                foreach (var item in objlist)
+                {
+                    SelectListItem o = new SelectListItem();
+                    o.Text = item.TrnMode;
+                    o.Value = item.id.ToString();
+                    trytype.Add(o);
+                }
 
-            if (id>0)
-            {
-                var cou = db.tblTransactions.Find(id);
-                return View(cou);
+                List<SelectListItem> coursel = new List<SelectListItem>();
+                var courseist = db.tblClassCourses.Select(s => new { s.id, s.CourseName }).ToList();
+                foreach (var item in courseist)
+                {
+                    SelectListItem c = new SelectListItem();
+                    c.Text = item.CourseName;
+                    c.Value = item.id.ToString();
+                    coursel.Add(c);
+                }
 
-
+                ViewBag.course = coursel;
+                ViewBag.trnmodes = trytype;
             }
 
 
