@@ -18,8 +18,6 @@ namespace Education_Service.Controllers
             return View();
         }
 
-        
-
         public ActionResult jay()
         {
             return View();
