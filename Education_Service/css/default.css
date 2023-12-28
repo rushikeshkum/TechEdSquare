@@ -910,16 +910,16 @@
 [data-overlay] {
 	position: relative;
 }
-[data-overlay]::before {
-	background: #07294d none repeat scroll 0 0;
-	content: "";
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: 1;
-}
+	[data-overlay]::before {
+		background: #5a3eaf none repeat scroll 0 0;
+		content: "";
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
 [data-overlay="3"]::before {
 	opacity: 0.3;
 }

@@ -47,24 +47,25 @@
                             </li>
 
                             @{
-                                if (User.Identity.IsAuthenticated)
-                                {
-                                    DB_techedEntities db = new DB_techedEntities();
-                                    string username = User.Identity.Name;
-                                    var obj = db.tblStudentDatas.Where(w => w.StudentCourseUsername == username).FirstOrDefault();
-                                    if (obj != null && obj.Roles == "Student")
-                                    {
+                                        if (User.Identity.IsAuthenticated)
+                                        {
+                                            DB_techedEntities db = new DB_techedEntities();
+                                            string username = User.Identity.Name;
+                                            var obj = db.tblStudentDatas.Where(w => w.StudentCourseUsername == username).FirstOrDefault();
+                                            if (obj != null && obj.Roles == "Student")
+                                            {
+                                                var uid = obj.id;
                                         <li class="nav-item">
                                             <a href="/MyCourseUser/MyCourse">My course<button class="sub-nav-toggler"> <i class="fa fa-chevron-down"></i> </button></a>
                                             <ul class="sub-menu">
-                                                <li><a href="/userprofie/profile">User profile</a></li>
+                                                <li><a href="@Url.Action("Profile","UserProfie" ,new {id=uid})">User profile</a></li>
                                                 <li><a href="contact-2.html">Payment history</a></li>
                                                 <li><a href="contact-2.html">Anouncement</a></li>
                                             </ul>
                                         </li>
 
                                     }
-                                }
+                            }
                             }
 
                             <li class="nav-item">

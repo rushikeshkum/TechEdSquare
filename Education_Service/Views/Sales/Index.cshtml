@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Education_Service.tblSale>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TrnDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblStudentData.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblClassCourse.CourseName)
+        </th>
+        <th></th>
+    </tr>
+    <h2>Sales</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in (List<tblSale>) ViewBag.sales)
+                {
+                    <tr>
+                        <td>@item.TrnDate</td>
+                        <td>@item.tblStudentData.StudentName</td>
+                        <td>@item.tblClassCourse.CourseName</td>
+
+
+                        @*<td>
+                            @Html.ActionLink("Edit", "MakeAnnouncement", new { id = item.id }, new { @class = "btn btn-success btn-sm" }) |
+                            @Html.ActionLink("Delete", "DeleteAnnouncement", new { id = item.id }, new { @class = "btn btn-info btn-sm" })
+                        </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+   
+
+</table>

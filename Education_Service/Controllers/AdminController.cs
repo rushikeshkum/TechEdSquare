@@ -20,6 +20,10 @@ namespace Education_Service.Controllers
         [HttpPost]
         public ActionResult Index(AdminLogin obj)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index");
+            }
             var user = db.tblAdmins.
                 Where(w => w.AdminUsername.ToLower() == obj.UsernameAdmin.ToLower() &&
                 w.AdminPassword == obj.PasswordAdmin).FirstOrDefault();
@@ -27,7 +31,7 @@ namespace Education_Service.Controllers
             {
                 FormsAuthentication.SetAuthCookie(obj.UsernameAdmin , false);
 
-                return RedirectToAction("Index", "AdminDashboard");
+                return RedirectToAction("Index", "AdminCourse");
             }
             else
             {
